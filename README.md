@@ -1,1 +1,1 @@
-# BarangayInformationSystem-BIS-
+# Barangay Information System (BIS)
