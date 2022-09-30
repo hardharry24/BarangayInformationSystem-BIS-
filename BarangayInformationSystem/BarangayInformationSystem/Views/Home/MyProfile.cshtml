@@ -1,0 +1,204 @@
+﻿
+@{
+    ViewBag.Title = "My Profile";
+    ViewBag.Controller = "Home";
+    Layout = "~/Views/Shared/_Inner_Layout.cshtml";
+}
+@model BarangayInformationSystem.Models.ViewModel
+
+<link href="~/Content/assets/css/login.css" rel="stylesheet" />
+<link href="~/Content/assets/css/myprofile.css" rel="stylesheet" />
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<div class="row">
+    <div class="col-12">
+        <!-- Form START -->
+        <form class="file-upload">
+            <input type="checkbox" id="ckToggle" class="float-right" data-toggle="toggle" data-on="Disable" data-off="Enable" data-onstyle="primary" onchange="editToggle()">
+            <div class="row mb-5 gx-5">
+                <div class="col-xxl-6 mb-5 mb-xxl-0">
+                    <div class="bg-secondary-soft px-4 py-5 rounded">
+                        <div class="row g-3">
+                            <h4 class="mb-4 mt-0">Personal Information</h4>
+                            <div class="col-md-6">
+                                <label class="form-label">First Name </label>
+                                @Html.TextBoxFor(m=>m.user_detail.user_fname, new { @placeholder = "", @id = "personal", @class = "form-control personal", @required="true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Last Name </label>
+                                @Html.TextBoxFor(m => m.user_detail.user_lname, new { @placeholder = "", @id = "personal", @class = "form-control personal", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Middle Name</label>
+                               @Html.TextBoxFor(m => m.user_detail.user_mname, new { @placeholder = "", @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Suffix (Ex. Jr.,Sr.,III etc)</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_suffix, new { @placeholder = "", @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Date of Birth </label>
+                                @Html.TextBoxFor(m => m.user_detail.user_date_birth, new { @class = "form-control", @id = "personal", @type = "date", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Gender </label>
+                                @Html.DropDownListFor(m => m.user_detail.user_gender, new SelectList(Model.gender_option, "gender_id", "gender_description", Model.user_detail.user_gender), new { @id = "personal", @class ="form-control"})
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail4" class="form-label">Civi Status </label>
+                                @Html.DropDownListFor(m => m.user_detail.user_civil_status, new SelectList(Model.civil_status_option, "civil_status_id", "civil_status_description", Model.user_detail.user_civil_status), new { @id = "personal", @class = "form-control" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Nationality</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_nationality, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Religion</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_religion, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Mobile #</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_mobile_no, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Tel #</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_mobile_no, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Place of Birth (City,Province)</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_place_birth, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                        </div> <!-- Row END -->
+                    </div>
+                </div>
+                <!-- Upload profile -->
+                <div class="col-xxl-6 mb-5 mb-xxl-0">
+                    <div class="bg-secondary-soft px-4 py-5 rounded">
+                        <div class="row g-3">
+                            <h4 class="mb-4 mt-0">Address</h4>
+                            <div class="col-md-6">
+                                <label class="form-label">RM./FLR./UNIT NO. & BLDG. NAME</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_place_birth, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">HOUSE/LOT & BLK. NO</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_address_house_no, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">STREET NAME</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_address_street, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">SUBDIVISION</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_address_subdivision, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">BARANGAY/DISTRICT/LOCALITY</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_address_brgy, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">CITY/MUNICIPALITY</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_address_city, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">PROVINCE</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_address_province, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">COUNTRY</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_address_country, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">ZIP CODE</label>
+                                @Html.TextBoxFor(m => m.user_detail.user_address_country, new { @id = "personal", @class = "form-control", @required = "true" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Row END -->
+            <!-- Social media detail -->
+            <div class="row mb-5 gx-5">
+                <div class="col-xxl-6 mb-5 mb-xxl-0">
+                    <div class="bg-secondary-soft px-4 py-5 rounded">
+                        <div class="row g-3">
+                            <h4 class="mb-4 mt-0">Social media detail</h4>
+                            <!-- Facebook -->
+                            <div class="col-md-6">
+                                <label class="form-label"><i class="fab fa-fw fa-facebook me-2 text-facebook"></i>Facebook *</label>
+                                <input type="text" class="form-control" placeholder="" aria-label="Facebook" value="http://www.facebook.com">
+                            </div>
+                            <!-- Twitter -->
+                            <div class="col-md-6">
+                                <label class="form-label"><i class="fab fa-fw fa-twitter text-twitter me-2"></i>Twitter *</label>
+                                <input type="text" class="form-control" placeholder="" aria-label="Twitter" value="http://www.twitter.com">
+                            </div>
+                            <!-- Linkedin -->
+                            <div class="col-md-6">
+                                <label class="form-label"><i class="fab fa-fw fa-linkedin-in text-linkedin me-2"></i>Linkedin *</label>
+                                <input type="text" class="form-control" placeholder="" aria-label="Linkedin" value="http://www.linkedin.com">
+                            </div>
+                            <!-- Instragram -->
+                            <div class="col-md-6">
+                                <label class="form-label"><i class="fab fa-fw fa-instagram text-instagram me-2"></i>Instagram *</label>
+                                <input type="text" class="form-control" placeholder="" aria-label="Instragram" value="http://www.instragram.com">
+                            </div>
+                            <!-- Dribble -->
+                            <div class="col-md-6">
+                                <label class="form-label"><i class="fas fa-fw fa-basketball-ball text-dribbble me-2"></i>Dribble *</label>
+                                <input type="text" class="form-control" placeholder="" aria-label="Dribble" value="http://www.dribble.com">
+                            </div>
+                            <!-- Pinterest -->
+                            <div class="col-md-6">
+                                <label class="form-label"><i class="fab fa-fw fa-pinterest text-pinterest"></i>Pinterest *</label>
+                                <input type="text" class="form-control" placeholder="" aria-label="Pinterest" value="http://www.pinterest.com">
+                            </div>
+                        </div> <!-- Row END -->
+                    </div>
+                </div>
+
+                <!-- change password -->
+                <div class="col-xxl-6">
+                    <div class="bg-secondary-soft px-4 py-5 rounded">
+                        <div class="row g-3">
+                            <h4 class="my-4">Change Password</h4>
+                            <!-- Old password -->
+                            <div class="col-md-6">
+                                <label for="exampleInputPassword1" class="form-label">Old password *</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <!-- New password -->
+                            <div class="col-md-6">
+                                <label for="exampleInputPassword2" class="form-label">New password *</label>
+                                <input type="password" class="form-control" id="exampleInputPassword2">
+                            </div>
+                            <!-- Confirm password -->
+                            <div class="col-md-12">
+                                <label for="exampleInputPassword3" class="form-label">Confirm Password *</label>
+                                <input type="password" class="form-control" id="exampleInputPassword3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Row END -->
+            <!-- button -->
+            <div class="gap-3 d-md-flex justify-content-md-end text-center">
+                <button type="button" class="btn btn-danger btn-lg">Delete profile</button>
+                <button type="button" class="btn btn-primary btn-lg">Update profile</button>
+            </div>
+        </form> <!-- Form END -->
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function editToggle()
+    {
+        var toggleVal = document.getElementById("ckToggle").checked;
+        if (toggleVal) {
+            document.getElementById("personal").readOnly = true;
+        }
+        else {
+            document.getElementById("personal").readOnly = false;
+        }
+    }
+</script>

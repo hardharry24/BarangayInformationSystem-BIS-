@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    ViewBag.Controller = "Home";
+    Layout = "~/Views/Shared/_Inner_Layout.cshtml";
+}
+@model BarangayInformationSystem.Models.ViewModel
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            @using (Html.BeginForm("Register", "Home"))
+            {
+                <p class="hint-text">Fill in this form to create your account!</p>
+                if (!String.IsNullOrEmpty(Model.response.message))
+                { 
+                    if ((Int32)Model.response.code == 1)
+                    {
+                        <div class="alert alert-success">@Model.response.message</div>
+                    }
+                    else if ((Int32)Model.response.code == 0)
+                    {
+                        <div class="alert alert-danger">@Model.response.message</div>
+                    }
+                }
+                <div class="form-group">
+                    @Html.Label("Email address", new { @for = "exampleInputEmail1" })
+                    @Html.TextBoxFor(m=>m.user.user_email, new { @id = "exampleInputEmail1", @placeholder = "Enter email", @type="email", @class="form-control", @required = "true" })  
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Password", new { @for = "exampleInputPassword1" })
+                    @Html.TextBoxFor(m => m.user.user_password, new { @id = "exampleInputPassword1", @placeholder = "Password", @type = "password", @class = "form-control", @required = "true" })
+                    
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword2">Confirm Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" name="password2" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
+                </div>
+                <input type="submit" class="btn btn-primary btn-block" value="Sign up">
+            }
+        </div>
+    </div>
+   
+   
+</div>
+
+
+

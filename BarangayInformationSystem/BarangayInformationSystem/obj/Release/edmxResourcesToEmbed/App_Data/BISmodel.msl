@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_bisModelStoreContainer" CdmEntityContainer="db_bisEntities">
+    <EntitySetMapping Name="civil_status">
+      <EntityTypeMapping TypeName="db_bisModel.civil_status">
+        <MappingFragment StoreEntitySet="civil_status">
+          <ScalarProperty Name="civil_status_description" ColumnName="civil_status_description" />
+          <ScalarProperty Name="civil_status_id" ColumnName="civil_status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gender">
+      <EntityTypeMapping TypeName="db_bisModel.gender">
+        <MappingFragment StoreEntitySet="gender">
+          <ScalarProperty Name="gender_code" ColumnName="gender_code" />
+          <ScalarProperty Name="gender_description" ColumnName="gender_description" />
+          <ScalarProperty Name="gender_id" ColumnName="gender_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purok">
+      <EntityTypeMapping TypeName="db_bisModel.purok">
+        <MappingFragment StoreEntitySet="purok">
+          <ScalarProperty Name="purok_leader" ColumnName="purok_leader" />
+          <ScalarProperty Name="purok_name" ColumnName="purok_name" />
+          <ScalarProperty Name="purok_no" ColumnName="purok_no" />
+          <ScalarProperty Name="purok_id" ColumnName="purok_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sitio">
+      <EntityTypeMapping TypeName="db_bisModel.sitio">
+        <MappingFragment StoreEntitySet="sitio">
+          <ScalarProperty Name="sitio_name" ColumnName="sitio_name" />
+          <ScalarProperty Name="sitio_id" ColumnName="sitio_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="db_bisModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="db_bisModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="user_status" ColumnName="user_status" />
+          <ScalarProperty Name="user_is_verified" ColumnName="user_is_verified" />
+          <ScalarProperty Name="user_access_code" ColumnName="user_access_code" />
+          <ScalarProperty Name="user_login_type" ColumnName="user_login_type" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_auto_id" ColumnName="user_auto_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_detail">
+      <EntityTypeMapping TypeName="db_bisModel.user_detail">
+        <MappingFragment StoreEntitySet="user_detail">
+          <ScalarProperty Name="user_others_indigent" ColumnName="user_others_indigent" />
+          <ScalarProperty Name="user_is_uct" ColumnName="user_is_uct" />
+          <ScalarProperty Name="user_is_4ps" ColumnName="user_is_4ps" />
+          <ScalarProperty Name="user_has_philhealth" ColumnName="user_has_philhealth" />
+          <ScalarProperty Name="user_has_sss" ColumnName="user_has_sss" />
+          <ScalarProperty Name="user_precinct" ColumnName="user_precinct" />
+          <ScalarProperty Name="user_registered" ColumnName="user_registered" />
+          <ScalarProperty Name="user_has_national_id" ColumnName="user_has_national_id" />
+          <ScalarProperty Name="user_other_vax" ColumnName="user_other_vax" />
+          <ScalarProperty Name="user_comorbidities" ColumnName="user_comorbidities" />
+          <ScalarProperty Name="user_is_covid_vax" ColumnName="user_is_covid_vax" />
+          <ScalarProperty Name="user_is_PWD" ColumnName="user_is_PWD" />
+          <ScalarProperty Name="user_is_malnourish" ColumnName="user_is_malnourish" />
+          <ScalarProperty Name="user_weight" ColumnName="user_weight" />
+          <ScalarProperty Name="user_height" ColumnName="user_height" />
+          <ScalarProperty Name="user_blood" ColumnName="user_blood" />
+          <ScalarProperty Name="user_tel_no" ColumnName="user_tel_no" />
+          <ScalarProperty Name="user_mobile_no" ColumnName="user_mobile_no" />
+          <ScalarProperty Name="user_zip_code" ColumnName="user_zip_code" />
+          <ScalarProperty Name="user_address_country" ColumnName="user_address_country" />
+          <ScalarProperty Name="user_address_province" ColumnName="user_address_province" />
+          <ScalarProperty Name="user_address_city" ColumnName="user_address_city" />
+          <ScalarProperty Name="user_address_brgy" ColumnName="user_address_brgy" />
+          <ScalarProperty Name="user_address_subdivision" ColumnName="user_address_subdivision" />
+          <ScalarProperty Name="user_address_street" ColumnName="user_address_street" />
+          <ScalarProperty Name="user_address_house_no" ColumnName="user_address_house_no" />
+          <ScalarProperty Name="user_address_unit_no" ColumnName="user_address_unit_no" />
+          <ScalarProperty Name="user_place_city" ColumnName="user_place_city" />
+          <ScalarProperty Name="user_place_province" ColumnName="user_place_province" />
+          <ScalarProperty Name="user_place_birth" ColumnName="user_place_birth" />
+          <ScalarProperty Name="user_religion" ColumnName="user_religion" />
+          <ScalarProperty Name="user_nationality" ColumnName="user_nationality" />
+          <ScalarProperty Name="user_civil_status" ColumnName="user_civil_status" />
+          <ScalarProperty Name="user_gender" ColumnName="user_gender" />
+          <ScalarProperty Name="user_date_birth" ColumnName="user_date_birth" />
+          <ScalarProperty Name="user_purokleader" ColumnName="user_purokleader" />
+          <ScalarProperty Name="user_sitio" ColumnName="user_sitio" />
+          <ScalarProperty Name="user_houseno" ColumnName="user_houseno" />
+          <ScalarProperty Name="user_purok" ColumnName="user_purok" />
+          <ScalarProperty Name="user_username" ColumnName="user_username" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_age" ColumnName="user_age" />
+          <ScalarProperty Name="user_suffix" ColumnName="user_suffix" />
+          <ScalarProperty Name="user_mname" ColumnName="user_mname" />
+          <ScalarProperty Name="user_fname" ColumnName="user_fname" />
+          <ScalarProperty Name="user_lname" ColumnName="user_lname" />
+          <ScalarProperty Name="user_detail_id" ColumnName="user_detail_id" />
+          <ScalarProperty Name="user_detail_auto_id" ColumnName="user_detail_auto_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

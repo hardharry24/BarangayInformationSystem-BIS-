@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_bisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="db_bisEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="civil_status" EntityType="db_bisModel.civil_status" />
+    <EntitySet Name="gender" EntityType="db_bisModel.gender" />
+    <EntitySet Name="purok" EntityType="db_bisModel.purok" />
+    <EntitySet Name="sitio" EntityType="db_bisModel.sitio" />
+    <EntitySet Name="sysdiagrams" EntityType="db_bisModel.sysdiagrams" />
+    <EntitySet Name="user" EntityType="db_bisModel.user" />
+    <EntitySet Name="user_detail" EntityType="db_bisModel.user_detail" />
+  </EntityContainer>
+  <EntityType Name="civil_status">
+    <Key>
+      <PropertyRef Name="civil_status_id" />
+    </Key>
+    <Property Name="civil_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="civil_status_description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="gender">
+    <Key>
+      <PropertyRef Name="gender_id" />
+    </Key>
+    <Property Name="gender_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="gender_description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gender_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="purok">
+    <Key>
+      <PropertyRef Name="purok_id" />
+    </Key>
+    <Property Name="purok_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="purok_no" Type="Int32" />
+    <Property Name="purok_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="purok_leader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sitio">
+    <Key>
+      <PropertyRef Name="sitio_id" />
+    </Key>
+    <Property Name="sitio_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sitio_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_auto_id" />
+    </Key>
+    <Property Name="user_auto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_login_type" Type="Int32" />
+    <Property Name="user_access_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_is_verified" Type="Int32" />
+    <Property Name="user_status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="user_detail">
+    <Key>
+      <PropertyRef Name="user_detail_auto_id" />
+    </Key>
+    <Property Name="user_detail_auto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_detail_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_lname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_fname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_mname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_age" Type="Int32" />
+    <Property Name="user_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_purok" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_houseno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_sitio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_purokleader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_date_birth" Type="DateTime" Precision="0" />
+    <Property Name="user_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_civil_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_place_birth" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_place_province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_place_city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="user_address_unit_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_address_house_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_address_street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_address_subdivision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_address_brgy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_address_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_address_province" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_address_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_zip_code" Type="Int32" />
+    <Property Name="user_mobile_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_tel_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_blood" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_height" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_weight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_is_malnourish" Type="Int32" />
+    <Property Name="user_is_PWD" Type="Int32" />
+    <Property Name="user_is_covid_vax" Type="Int32" />
+    <Property Name="user_comorbidities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_other_vax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="user_has_national_id" Type="Int32" />
+    <Property Name="user_registered" Type="Int32" />
+    <Property Name="user_precinct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_has_sss" Type="Int32" />
+    <Property Name="user_has_philhealth" Type="Int32" />
+    <Property Name="user_is_4ps" Type="Int32" />
+    <Property Name="user_is_uct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_others_indigent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

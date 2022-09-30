@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Verification";
+    ViewBag.Controller = "Register";
+    Layout = "~/Views/Shared/_Inner_Layout.cshtml";
+}
+
+<h2>Please check your email for verification code..</h2>
+<hr />
+<div class="row">
+    <div class="col-12 col-lg-12">
+        <div class="col-6 col-xl">
+            @using (Html.BeginForm("Verification", "Home", FormMethod.Post))
+            {
+                if (!String.IsNullOrEmpty(Model.response.message))
+                {
+                    if ((Int32)Model.response.code == 1)
+                    {
+                        <div class="alert alert-success">@Model.response.message</div>
+                    }
+                    else if ((Int32)Model.response.code == 0)
+                    {
+                        <div class="alert alert-danger">@Model.response.message</div>
+                    }
+                }
+                <label>Enter code here:</label>
+                <input type = "text" name = "code" value = "" style = "text-align:center;" placeholder = "****" class="form-control" required />
+                <br />
+                <input type = "submit" name="name" value="Submit" class="btn btn-primary" />
+            }
+        </div>
+    </div>
+</div>

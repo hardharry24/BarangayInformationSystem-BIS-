@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Controller = "Home";
+    Layout = "~/Views/Shared/_Inner_Layout.cshtml";
+}
+@model BarangayInformationSystem.Models.ViewModel
+
+<link href="~/Content/assets/css/userindex.css" rel="stylesheet" />
+<link href="~/Content/assets/css/login.css" rel="stylesheet" />
+<div class="row">
+    <label>Welcome @(!String.IsNullOrEmpty(Model.user_detail.user_lname) ? Model.user_detail.user_lname : "" )!</label>
+  
+
+    <div class="container">
+        <br />
+        <div class="section-title" data-aos="fade-up">
+            <h2>Baranggay Services</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card-box bg-blue">
+                            <div class="inner">
+                                <h3> INDIGENCY </h3>
+                                <p>  </p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                            </div>
+                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card-box bg-blue">
+                            <div class="inner">
+                                <h3> ENDORSEMENT </h3>
+                                <p>  </p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                            </div>
+                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card-box bg-blue">
+                            <div class="inner">
+                                <h3> SUMMON </h3>
+                                <p>  </p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                            </div>
+                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card-box bg-blue">
+                            <div class="inner">
+                                <h3> RESIDENCY </h3>
+                                <p>  </p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                            </div>
+                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card-box bg-blue">
+                            <div class="inner">
+                                <h3> CLEARANCE </h3>
+                                <p>  </p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                            </div>
+                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card-box bg-blue">
+                            <div class="inner">
+                                <h3> INDIGENCY </h3>
+                                <p>  </p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-file" aria-hidden="true"></i>
+                            </div>
+                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Content/assets/js/loginScript.js"></script>

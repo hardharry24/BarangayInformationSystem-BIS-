@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    ViewBag.Controller = "Home";
+    Layout = "~/Views/Shared/_Inner_Layout.cshtml";
+}
+<link href="~/Content/assets/css/login.css" rel="stylesheet" />
+
+@model BarangayInformationSystem.Models.ViewModel
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            <div id="first">
+                <div class="myform form ">
+                    <div class="logo mb-3">
+                        <div class="col-md-12 text-center">
+                            <h1>Welcome Login</h1>
+                        </div>
+                    </div>
+                    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { style = "margin: 15px;" }))
+                    {
+                        if (!String.IsNullOrEmpty(Model.response.message))
+                        {
+                            if ((Int32)Model.response.code == 1)
+                            {
+                                <div class="alert alert-success">@Model.response.message</div>
+                            }
+                            else if ((Int32)Model.response.code == 0)
+                            {
+                                <div class="alert alert-danger">@Model.response.message</div>
+                            }
+                        }
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Username</label>
+                            @Html.TextBoxFor(m=>m.user.user_email , new { @class = "form-control", @placeholder = "Enter Username", @required = true, @type="text" })
+                            @*<input type="text" name="username" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Username" required>*@
+                        </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Password</label>
+                                @Html.TextBoxFor(m => m.user.user_password, new { @class = "form-control", @placeholder = "Enter Username", @required = true, @type = "password" })
+                                @*<input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp" placeholder="Enter Password" required>*@
+                            </div>
+                            <div class="form-group">
+                                <label style="cursor:pointer;">
+                                    Remember me
+                                    <input type="checkbox" name="isRemember" id="isRemember">
+                                </label>
+                                <br />
+                            </div>
+                            <div class="col-md-12 text-center ">
+                                <hr />
+                                <button type="submit" class="btn btn-primary" id="btnLogin">Login</button>
+                            </div>
+                            <div class="col-md-12 text-center ">
+                                <label>as</label>
+                            </div>
+                            <div class="col-md-12 text-center ">
+                                @*<button type="button" class="btn btn-primary" autologoutlink="true" scope="email,user_checkins"><i class="fa fa-facebook"></i> Facebook</button>*@
+                                <fb:login-button scope="public_profile,email"
+                                                 onlogin="checkFBLoginState();">
+                                </fb:login-button>
+                            </div>
+                            <div class="col-md-12 text-center ">
+                                @*<button type="button" class="btn btn-default" id="btnLogin"><img src="https://img.icons8.com/color/16/000000/google-logo.png"> Signup Using Google</button>*@
+                            </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+   
+
+<script src="~/Content/assets/js/loginScript.js"></script>

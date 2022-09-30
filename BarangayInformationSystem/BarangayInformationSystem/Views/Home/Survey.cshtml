@@ -1,0 +1,710 @@
+﻿
+@{
+    ViewBag.Title = "Survey";
+    ViewBag.Controller = "Home";
+    Layout = "~/Views/Shared/_Inner_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-4">
+        <img src="~/Content/assets/img/mandaue.png"  style="width: 25%;" />
+    </div>
+    <div class="col-sm-4">
+        <center>
+            CITY OF MANDAUE <br />
+            HOUSEHOLD SURVEY SHEET FOR BARANGAY OPAO
+        </center>
+    </div>
+    <div class="col-4">
+
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-sm-2">
+         <div class="form-group">
+             PUROK
+             <select class="form-control" id="purok"></select>
+         </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            PUROK LEADER
+            <input type="text" name="name" class="form-control" value=""  id="purokleader" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-2">
+        <div class="form-group">
+            HOUSE NUMBER
+            <input type="text" name="name" class="form-control" value=""  id="houseno"/>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="form-group">
+            SITIO
+            <select class="form-control" id="sitio"></select>
+        </div>
+    </div>
+</div>
+<hr />
+
+<div class="main" id="mainRow">
+   
+    <div class="row" id="row1">
+        <div class="col-sm-2">
+            <label class="text-center"><b></b></label>
+            <br />
+            Member Type
+            <div class="col-sm-12">
+                <select class="form-control" id="memberType">
+                    <option value="0">SELECT</option>
+                    <option value="Family Head">Family Head</option>
+                    <option value="Spouse">Spouse</option>
+                    <option value="Child">Child</option>
+                    <option value="Relative">Relative</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <b>NAME</b>
+            <br />
+            First Name
+            <input type="text" class="form-control" name="name" value="" id="firstname" />
+            Middle Name
+            <input type="text" class="form-control" name="name" value=""  id="mi" />
+            Last Name
+            <input type="text" class="form-control" name="name" value=""  id="lastname"/>
+        </div>
+        <div class="col-sm-2">
+            <b>CONTACT INFORMATION</b>
+            <br />
+            Cellphone
+            <input type="text" class="form-control" name="name" value="" id="cp"/>
+            Email
+            <input type="text" class="form-control" name="name" value="" id="email" />
+            Username
+            <input type="text" class="form-control" name="name" value="" id="username"/>
+        </div>
+        <div class="col-sm-2">
+            <b>BIRTH INFORMATION</b>
+            <br />
+            <div class="col-sm-12">
+                Age
+                <input type="number" class="form-control" name="name" value="" id="age" />
+            </div>
+            <div class="col-sm-12">
+                Birth Date
+                <input type="date" class="form-control" name="name" value="" id="birthdate"/>
+            </div>
+            <div class="col-sm-12">
+                Region
+                <select name="region" id="region" class="form-control"></select>
+            </div>
+            <div class="col-sm-12">
+                Province
+                <select name="province" id="province" class="form-control"></select>
+            </div>
+            <div class="col-sm-12">
+                City/Municipality
+                <select name="city" id="city" class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <b>HEALTH INFORMATION</b>
+            <br />
+            <div class="row">
+                <div class="col-sm-12">
+                    Blood
+                    <input type="text" class="form-control" name="name" value="" id="blood"/>
+                </div>
+                <div class="col-sm-12">
+                    Height(ft/in)
+                    <input type="text" class="form-control" name="name" value="" id="height"/>
+                </div>
+                <div class="col-sm-12">
+                    Weight(lbs)
+                    <input type="text" class="form-control" name="name" value="" id="weight"/>
+                </div>
+                <div class="col-sm-12">
+                    Gender
+                    <select class="form-control" id="gender">
+                        <option value="0">SELECT</option>
+                        <option value="M">M</option>
+                        <option value="F">F</option>
+                        <option value="LGBT">LGBT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="Malnourish">
+                        <label class="form-check-label" for="Malnourish">
+                            Malnourish?
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="PWD">
+                        <label class="form-check-label" for="PWD">
+                            PWD?
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="COVIDVAX">
+                        <label class="form-check-label" for="COVIDVAX">
+                            COVID Vax?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    Comorbidities
+                    <input type="text" class="form-control" name="name" value="" id="comorbidities"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    Other Vax
+                    <input type="text" class="form-control" name="name" value="" id="othervax" />
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <b>PERSONAL INFORMATION</b>
+            <br />
+            <div class="row">
+                <div class="col-sm-12">
+                    Civil Status
+                    <select class="form-control" id="civilstatus">
+                        <option value="0">SELECT</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Solo">Solo</option>
+                        <option value="Separated">Separated</option>
+                        <option value="Widower">Widower</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="NationalID">
+                        <label class="form-check-label" for="NationalID">
+                            National ID?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="Registered">
+                        <label class="form-check-label" for="Registered">
+                            Registered Voter ?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    Precinct
+                    <input type="text" class="form-control" name="name" value="" id="Precinct"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="SSS">
+                        <label class="form-check-label" for="SSS">
+                            SSS/GSIS?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="PhilHealth">
+                        <label class="form-check-label" for="PhilHealth">
+                            PhilHealth?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="4ps">
+                        <label class="form-check-label" for="4ps">
+                            4P's?
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="UCT">
+                        <label class="form-check-label" for="UCT">
+                            UCT?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    Others
+                    <input type="text" class="form-control" name="name" value="" id="othersIndigent"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <br /><br />
+        <div class="col-sm-6">
+            <button onclick="onAddItem()" class="btn btn-primary"> Save Details</button>
+        </div>
+
+    </div>
+    <hr />
+    <h1>Members: </h1>
+    <table id="mainRowBody" class="table table-striped responsive" style="width: 100%;">
+        <tr>
+            <th>Full Name</th>
+            <th>Contact Info</th>
+            <th>Birth Info</th>
+            <th>Health Info</th>
+            <th>Personal Info</th>
+            <th>Type</th>
+            <th>Action</th>
+        </tr>
+    </table>
+    <br />
+    <button onclick="saveAll()" class="btn btn-success" id="btnSaveAll"> Save All</button>
+</div>
+<script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js"></script>
+<script src="~/Content/assets/js/MessageInfo.js"></script>
+<script type="text/javascript">
+    var id = 0;
+    var memberList = new Array();
+    var puroklist = new Array();
+    hideShowSaveBtn();
+    loadPurok();
+    var my_handlers = {
+        fill_provinces: function () {
+
+            var region_code = $(this).val();
+            $('#province').ph_locations('fetch_list', [{ "region_code": region_code }]);
+        },
+        fill_cities: function () {
+
+            var province_code = $(this).val();
+            $('#city').ph_locations('fetch_list', [{ "province_code": province_code }]);
+        },
+        fill_barangays: function () {
+
+            var city_code = $(this).val();
+            $('#barangay').ph_locations('fetch_list', [{ "city_code": city_code }]);
+        },
+        fill_purokLeader: function () {
+            var purokId = $(this).val();
+            console.log(puroklist.length);
+            for (var i = 0; i < puroklist.length; i++) {
+                //console.log();
+                console.log(puroklist[i].id  + " " + purokId);
+                if (puroklist[i].id == purokId)
+                {
+                    if (purokId != 0)
+                        $('#purokleader').val(puroklist[i].purok_leader);
+                    else
+                        $('#purokleader').val("");
+                }
+            }
+        }
+    };
+
+
+
+    $(function () {
+        $('#region').on('change', my_handlers.fill_provinces);
+        $('#province').on('change', my_handlers.fill_cities);
+        $("#purok").on('change', my_handlers.fill_purokLeader);
+        //$('#city').on('change', my_handlers.fill_barangays);
+
+        $('#region').ph_locations({ 'location_type': 'regions' });
+        $('#province').ph_locations({ 'location_type': 'provinces' });
+        $('#city').ph_locations({ 'location_type': 'cities' });
+        //$('#barangay').ph_locations({ 'location_type': 'barangays' });
+
+        $('#region').ph_locations('fetch_list');
+
+    });
+    function getPurokLeader(id)
+    {
+        //$("#purok").append("<option value='" + item + "'>" + purok.purok_name + "</option>");
+    }
+    function loadPurok()
+    {
+        // Purok
+        $.ajax({
+            type: "GET",
+            url: "/Base/getListPurok",
+            data : "{}",
+            success: function (response) {
+                $("#purok").append("<option value='0'>SELECT</option>");
+                for (var i = 0; i < response.length; i++) {
+                    var purok = response[i];
+                    puroklist.push(purok);
+                    //
+                    $("#purok").append("<option value='" + purok.id + "'>" + purok.purok_name + "</option>");
+                }
+            },
+            error : function(data)
+            {
+                //alert(data);
+            }
+        });
+        //
+        $.ajax({
+            type: "GET",
+            url: "/Base/getListSitio",
+            data: "{}",
+            success: function (response) {
+                $("#sitio").append("<option value='0'>SELECT</option>");
+                for (var i = 0; i < response.length; i++) {
+                    var sitio = response[i];
+                    //
+                    $("#sitio").append("<option value='" + sitio.id + "'>" + sitio.sitio_name + "</option>");
+                }
+            },
+            error: function (data) {
+                //alert(data);
+            }
+        });
+
+        //
+    }
+    //$('#my-city-dropdown').ph_locations('fetch_list', [{ "province_code": "1339" }]);
+    function onAddItem()
+    {
+        id++;
+        var txtfirstname = $("#firstname");
+        var txtlastname = $("#lastname");
+        var txtminame = $("#mi");
+        var memberType = $("#memberType");
+        //
+        var cp = $("#cp");
+        var email = $("#email");
+        var username = $("#username");
+        //
+        var age = $("#age");
+        var bdate = $("#birthdate");
+        var province = $("#province");
+        var city = $("#city");
+        //
+        var blood = $("#blood");
+        var height = $("#height");
+        var weight = $("#weight");
+        var gender = $("#gender");
+        var malnourish = document.getElementById("Malnourish").checked ? 1:0;
+        var PWD = document.getElementById("PWD").checked ? 1 : 0;
+        var COVIDVAX = document.getElementById("COVIDVAX").checked ? 1 : 0;
+        var comorbidities = $("#comorbidities");
+        var othervax = $("#othervax");
+        //
+        var civilS = $("#civilstatus");
+        var nationid = document.getElementById("NationalID").checked ? 1 : 0;
+        var registered = document.getElementById("Registered").checked ? 1 : 0;
+        var Precinct = $("#Precinct");
+        var sss = document.getElementById("SSS").checked ? 1 : 0;
+        var Philhealth = document.getElementById("PhilHealth").checked ? 1 : 0;
+        var _4ps = document.getElementById("4ps").checked ? 1 : 0;
+        var UCT = document.getElementById("UCT").checked ? 1 : 0;
+        var othersIndigent = $("#othersIndigent");
+
+        //
+        var purok = $("#purok").val();
+        var houseno = $("#houseno").val();
+        var sitio = $("#sitio").val();
+        var purokleader = $("#purokleader").val();
+
+        if (validateTxtbx(txtfirstname.val(), "Firstname") && validateTxtbx(txtlastname.val(), "Lastname") && validateTxtbx(email.val(), "Email") && validateTxtbx(cp.val(), "Cellphone")
+            && validateTxtbx(username.val(), "Username") && validateTxtbx(age.val(), "Age") && validateTxtbx(province.val(), "Province") && validateTxtbx(city.val(), "City/Municipality")
+            && validateTxtbx(blood.val(), "Blood Type") && validateTxtbx(height.val(), "Height") && validateTxtbx(weight.val(), "Weight") && validateTxtbx(txtlastname.val(), "Lastname") && validateTxtbx(bdate.val(), "Birth Date")
+            && validateSelect(memberType.val(), "Member Type") && validateSelect(gender.val(), "Gender") && validateSelect(civilS.val(), "Civil Status")
+            && validateSelect(purok, "Purok") && validateTxtbx(houseno, "House Number") && validateTxtbx(purokleader, "Purok Leader") && validateSelect(sitio, "Sitio")
+            && validateUsername(username.val())   && validateEmail(email.val()))
+        {
+            //construct data for validation
+            var model = {};
+            model.firstname = txtfirstname.val();
+            model.mi = txtminame.val();
+            model.lastname = txtlastname.val();
+            model.email = email.val();
+            model.username = username.val();
+            //POST HTTP
+            $.ajax({
+                type: "POST",
+                url: "/Base/ValidateDataSurvey",
+                data: JSON.stringify(model),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var resp = JSON.parse(JSON.stringify(response));
+                    if (resp.code) {
+                        var tBody = $("#mainRowBody > TBODY")[0];
+                        var row = tBody.insertRow(-1);
+
+                        //fullname column
+                        var cell = $(row.insertCell(-1));
+                        cell.html(txtfirstname.val() + " " + (txtminame.val() != "" ? txtminame.val() + "." : "") + " " + txtlastname.val());
+                        //Contact column
+                        var cell = $(row.insertCell(-1));
+                        cell.html("Cellphone: " + cp.val() + "<br/>Email: " + email.val() + "<br/>Username: " + username.val());
+                        //Birth column
+                        var cell = $(row.insertCell(-1));
+                        cell.html("Age: " + age.val() + "<br/>Birthdate: " + bdate.val() + "<br/>Province: " + province.val() + "<br/> City/Municipality: " + city.val());
+                        //Health column
+                        var cell = $(row.insertCell(-1));
+                        cell.html("Blood: " + blood.val() + "<br/>Height: " + height.val() + "<br/>Weight: " + weight.val() + "<br/> Gender: " + gender.val() + "<br/> Malnourish?: " + (malnourish ? "YES" : "NO") + "<br/> PWD?: " + (PWD ? "YES" : "NO") + "<br/> Covid Vax?: " + (COVIDVAX ? "YES" : "NO"));
+                        //Personal Info
+                        var cell = $(row.insertCell(-1));
+                        cell.html("Civil Status: " + civilS.val() + "<br/>Precinct: " + (Precinct.val() == "" ? "NA" : Precinct.val()) + "<br/> National ID??: " + (nationid ? "YES" : "NO") + "<br/> Registered Voter?: " + (registered ? "YES" : "NO") + "<br/> SSS/GSIS?: " + (SSS ? "YES" : "NO") + "<br/> Philhealth?: " + (Philhealth ? "YES" : "NO") + "<br/> 4P's?: " + (_4ps ? "YES" : "NO") + "<br/> UCT?: " + (UCT ? "YES" : "NO"));
+                        //Type column
+                        var cell = $(row.insertCell(-1));
+                        cell.html(memberType.val());
+                        //Add object
+                        var member = {};
+                        member.user_detail_id = id;
+                        member.user_lname = txtlastname.val();
+                        member.user_fname = txtfirstname.val();
+                        member.user_mname = txtminame.val();
+                        member.user_age = age.val();
+                        member.user_gender = gender.val();
+                        member.user_date_birth = bdate.val();
+                        member.user_civil_status = civilS.val();
+                        member.user_place_province = province.val();
+                        member.user_place_city = city.val();
+                        member.user_mobile_no = cp.val();
+                        member.user_email = email.val();
+                        member.user_username = username.val();
+                        member.user_blood = blood.val();
+                        member.user_height = height.val();
+                        member.user_blood = blood.val();
+                        member.user_weight = weight.val();
+                        member.user_is_malnourish = malnourish;
+                        member.user_is_PWD = PWD;
+                        member.user_is_covid_vax = COVIDVAX;
+                        member.user_comorbidities = comorbidities.val();
+                        member.user_other_vax = othervax.val();
+                        member.user_has_national_id = nationid;
+                        member.user_registered = registered;
+                        member.user_precinct = Precinct.val();
+                        member.user_has_sss = sss;
+                        member.user_has_philhealth = Philhealth;
+                        member.user_is_4ps = _4ps;
+                        member.user_is_uct = UCT;
+                        member.user_others_indigent = othersIndigent.val();
+                        member.user_purok = purok;
+                        member.user_houseno = houseno;
+                        member.user_sitio = sitio;
+                        member.user_purokleader = purokleader;
+                        memberList.push(member);
+
+                        //console.log(memberList);
+
+                        cell = $(row.insertCell(-1));
+                        var btnRemove = $("<input />");
+                        btnRemove.attr("type", "button");
+                        btnRemove.attr("class", "btn btn-danger")
+                        btnRemove.attr("onclick", "Remove(" + id + ",this);");
+                        btnRemove.val("Remove");
+                        cell.append(btnRemove);
+
+                        //
+                        MsgBox("Message", "Successfully Added!", "success")
+                        //Clear
+                        clearTxt();
+                        //
+                        hideShowSaveBtn();
+                    }
+                    else {
+                        MsgBox("Error Message", resp.message, "error");
+                    }
+                }
+            });
+        }
+    }
+
+    
+
+    function saveAll() {
+
+        if (memberList.length >= 1) {
+            var customModel = new Array();
+
+            //Send the JSON array to Controller using AJAX.
+            $.ajax({
+                type: "POST",
+                url: "/Home/AddUser",
+                data: JSON.stringify(memberList),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (r) {
+                    //alert(r + " record(s) inserted.");
+                    swal({
+                        title: "Message",
+                        text: r + " record(s) Added.\nPlease check your email!",
+                        icon: "success",
+                        buttons: true,
+                    })
+                   .then((willDelete) => {
+                       if (willDelete) {
+                           window.location = "/Home/Login";
+                       }
+                   });
+                    //MsgBox("Message", r + " record(s) Added.", "success");
+                }
+            });
+        }
+        else {
+            MsgBox("Message", "No Valid Members!", "error");
+        }
+    }
+
+    function clearTxt()
+    {
+        $("#firstname").val("");
+        $("#lastname").val("");
+        $("#mi").val("");
+        $("#memberType").val("0");
+        //
+        $("#cp").val("");
+        $("#email").val("");
+        $("#username").val("");
+        //
+        $("#age").val("");
+        $("#birthdate").val("");
+        $("#province").val("");
+        $("#city").val("");
+        //
+        $("#blood").val("");
+        $("#height").val("");
+        $("#weight").val("");
+        $("#gender").val("0");
+        document.getElementById("Malnourish").checked = 0;
+        document.getElementById("PWD").checked = 0;
+        document.getElementById("COVIDVAX").checked = 0;
+        $("#comorbidities").val("");
+        $("#othervax").val("");
+        //
+        $("#civilstatus").val("0");
+        document.getElementById("NationalID").checked = 0;
+        document.getElementById("Registered").checked = 0;
+        $("#Precinct").val("");
+        document.getElementById("SSS").checked = 0;
+        document.getElementById("PhilHealth").checked = 0;
+        document.getElementById("4ps").checked = 0;
+        document.getElementById("UCT").checked = 0;
+        $("#othersIndigent").val("");
+
+    }
+    function Remove(id,button)
+    {
+        var row = $(button).closest("TR");
+        var name = $("TD", row).eq(0).html();
+
+        swal({
+            title: "Are you sure?",
+            text: "Do you want to delete: " + name,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                //Get the reference of the Table.
+                var table = $("#mainRowBody")[0];
+                removeItemMember(id);
+                //Delete the Table row using it's Index.
+                table.deleteRow(row[0].rowIndex);
+                MsgBox("Message","Successfully Removed!","success")
+            } else {
+                swal("Cancel");
+            }
+        });
+        //
+        hideShowSaveBtn();
+    }
+
+
+
+    function removeItemMember(id)
+    {
+        for (var i = 0; i < memberList.length; i++) {
+            member = memberList[i];
+            if (member.user_detail_id == id)
+            {
+                memberList.splice(i, 1);
+            }
+        }
+    }
+
+    function validateTxtbx(str,key)
+    {
+        if (str == null || str == "")
+        {
+            MsgBox('Oops...', key + " is Empty!", "error");
+            return false;
+        }
+        return true;
+    }
+    function validateSelect(str, key)
+    {
+        if (str == null || str == "0") {
+            MsgBox('Oops...', key + " not valid!", "error");
+            return false;
+        }
+        return true;
+    }
+    function validateEmail(strVal)
+    {
+        var result = false;
+
+        for (var i = 0; i < memberList.length; i++) {
+            member = memberList[i];
+            if (member.user_email.toLowerCase() == strVal.toLowerCase()) {
+                MsgBox('Oops...', "Email Already Added!", "error");
+                return false;
+        //        result = true;
+            }
+        }
+      
+        return true;
+    }
+    function validateUsername(strVal)
+    {
+        for (var i = 0; i < memberList.length; i++) {
+            member = memberList[i];
+            if (member.user_username.toLowerCase() == strVal.toLowerCase()) {
+                MsgBox('Oops...', "Username Already Added!", "error");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function hideShowSaveBtn()
+    {
+        if (memberList.length > 0) {
+            $("#btnSaveAll").show();
+        }
+        else {
+            $("#btnSaveAll").hide();
+        }
+    }
+</script>
+

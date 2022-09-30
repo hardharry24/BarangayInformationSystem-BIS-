@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db_bisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="civil_status">
+          <Key>
+            <PropertyRef Name="civil_status_id" />
+          </Key>
+          <Property Name="civil_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="civil_status_description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="gender_id" />
+          </Key>
+          <Property Name="gender_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gender_description" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender_code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="purok">
+          <Key>
+            <PropertyRef Name="purok_id" />
+          </Key>
+          <Property Name="purok_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="purok_no" Type="int" />
+          <Property Name="purok_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="purok_leader" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sitio">
+          <Key>
+            <PropertyRef Name="sitio_id" />
+          </Key>
+          <Property Name="sitio_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sitio_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_auto_id" />
+          </Key>
+          <Property Name="user_auto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_email" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_password" Type="nvarchar(max)" />
+          <Property Name="user_login_type" Type="int" />
+          <Property Name="user_access_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_is_verified" Type="int" />
+          <Property Name="user_status" Type="int" />
+        </EntityType>
+        <EntityType Name="user_detail">
+          <Key>
+            <PropertyRef Name="user_detail_auto_id" />
+          </Key>
+          <Property Name="user_detail_auto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_detail_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_lname" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_fname" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_mname" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_suffix" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_age" Type="int" />
+          <Property Name="user_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_username" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_purok" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_houseno" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_sitio" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_purokleader" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_date_birth" Type="date" />
+          <Property Name="user_gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_civil_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_nationality" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_religion" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_place_birth" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_place_province" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_place_city" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_address_unit_no" Type="nvarchar(max)" />
+          <Property Name="user_address_house_no" Type="nvarchar(max)" />
+          <Property Name="user_address_street" Type="nvarchar(max)" />
+          <Property Name="user_address_subdivision" Type="nvarchar(max)" />
+          <Property Name="user_address_brgy" Type="nvarchar(max)" />
+          <Property Name="user_address_city" Type="nvarchar(max)" />
+          <Property Name="user_address_province" Type="nvarchar(max)" />
+          <Property Name="user_address_country" Type="nvarchar(max)" />
+          <Property Name="user_zip_code" Type="int" />
+          <Property Name="user_mobile_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_tel_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_blood" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_height" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_weight" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_is_malnourish" Type="int" />
+          <Property Name="user_is_PWD" Type="int" />
+          <Property Name="user_is_covid_vax" Type="int" />
+          <Property Name="user_comorbidities" Type="nvarchar(max)" />
+          <Property Name="user_other_vax" Type="nvarchar(max)" />
+          <Property Name="user_has_national_id" Type="int" />
+          <Property Name="user_registered" Type="int" />
+          <Property Name="user_precinct" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_has_sss" Type="int" />
+          <Property Name="user_has_philhealth" Type="int" />
+          <Property Name="user_is_4ps" Type="int" />
+          <Property Name="user_is_uct" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_others_indigent" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="db_bisModelStoreContainer">
+          <EntitySet Name="civil_status" EntityType="Self.civil_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gender" EntityType="Self.gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purok" EntityType="Self.purok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sitio" EntityType="Self.sitio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_detail" EntityType="Self.user_detail" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_bisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="db_bisEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="civil_status" EntityType="db_bisModel.civil_status" />
+          <EntitySet Name="gender" EntityType="db_bisModel.gender" />
+          <EntitySet Name="purok" EntityType="db_bisModel.purok" />
+          <EntitySet Name="sitio" EntityType="db_bisModel.sitio" />
+          <EntitySet Name="sysdiagrams" EntityType="db_bisModel.sysdiagrams" />
+          <EntitySet Name="user" EntityType="db_bisModel.user" />
+          <EntitySet Name="user_detail" EntityType="db_bisModel.user_detail" />
+        </EntityContainer>
+        <EntityType Name="civil_status">
+          <Key>
+            <PropertyRef Name="civil_status_id" />
+          </Key>
+          <Property Name="civil_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="civil_status_description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="gender_id" />
+          </Key>
+          <Property Name="gender_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gender_description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="purok">
+          <Key>
+            <PropertyRef Name="purok_id" />
+          </Key>
+          <Property Name="purok_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purok_no" Type="Int32" />
+          <Property Name="purok_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="purok_leader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sitio">
+          <Key>
+            <PropertyRef Name="sitio_id" />
+          </Key>
+          <Property Name="sitio_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sitio_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_auto_id" />
+          </Key>
+          <Property Name="user_auto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_login_type" Type="Int32" />
+          <Property Name="user_access_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_is_verified" Type="Int32" />
+          <Property Name="user_status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user_detail">
+          <Key>
+            <PropertyRef Name="user_detail_auto_id" />
+          </Key>
+          <Property Name="user_detail_auto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_detail_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_lname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_fname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_mname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_age" Type="Int32" />
+          <Property Name="user_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_purok" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_houseno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_sitio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_purokleader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_date_birth" Type="DateTime" Precision="0" />
+          <Property Name="user_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_civil_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_place_birth" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_place_province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_place_city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_unit_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_house_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_subdivision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_brgy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_province" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_address_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_zip_code" Type="Int32" />
+          <Property Name="user_mobile_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_tel_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_blood" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_height" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_weight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_is_malnourish" Type="Int32" />
+          <Property Name="user_is_PWD" Type="Int32" />
+          <Property Name="user_is_covid_vax" Type="Int32" />
+          <Property Name="user_comorbidities" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_other_vax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_has_national_id" Type="Int32" />
+          <Property Name="user_registered" Type="Int32" />
+          <Property Name="user_precinct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_has_sss" Type="Int32" />
+          <Property Name="user_has_philhealth" Type="Int32" />
+          <Property Name="user_is_4ps" Type="Int32" />
+          <Property Name="user_is_uct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_others_indigent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_bisModelStoreContainer" CdmEntityContainer="db_bisEntities">
+          <EntitySetMapping Name="civil_status">
+            <EntityTypeMapping TypeName="db_bisModel.civil_status">
+              <MappingFragment StoreEntitySet="civil_status">
+                <ScalarProperty Name="civil_status_description" ColumnName="civil_status_description" />
+                <ScalarProperty Name="civil_status_id" ColumnName="civil_status_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gender">
+            <EntityTypeMapping TypeName="db_bisModel.gender">
+              <MappingFragment StoreEntitySet="gender">
+                <ScalarProperty Name="gender_code" ColumnName="gender_code" />
+                <ScalarProperty Name="gender_description" ColumnName="gender_description" />
+                <ScalarProperty Name="gender_id" ColumnName="gender_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purok">
+            <EntityTypeMapping TypeName="db_bisModel.purok">
+              <MappingFragment StoreEntitySet="purok">
+                <ScalarProperty Name="purok_leader" ColumnName="purok_leader" />
+                <ScalarProperty Name="purok_name" ColumnName="purok_name" />
+                <ScalarProperty Name="purok_no" ColumnName="purok_no" />
+                <ScalarProperty Name="purok_id" ColumnName="purok_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sitio">
+            <EntityTypeMapping TypeName="db_bisModel.sitio">
+              <MappingFragment StoreEntitySet="sitio">
+                <ScalarProperty Name="sitio_name" ColumnName="sitio_name" />
+                <ScalarProperty Name="sitio_id" ColumnName="sitio_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db_bisModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="db_bisModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="user_status" ColumnName="user_status" />
+                <ScalarProperty Name="user_is_verified" ColumnName="user_is_verified" />
+                <ScalarProperty Name="user_access_code" ColumnName="user_access_code" />
+                <ScalarProperty Name="user_login_type" ColumnName="user_login_type" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_auto_id" ColumnName="user_auto_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_detail">
+            <EntityTypeMapping TypeName="db_bisModel.user_detail">
+              <MappingFragment StoreEntitySet="user_detail">
+                <ScalarProperty Name="user_others_indigent" ColumnName="user_others_indigent" />
+                <ScalarProperty Name="user_is_uct" ColumnName="user_is_uct" />
+                <ScalarProperty Name="user_is_4ps" ColumnName="user_is_4ps" />
+                <ScalarProperty Name="user_has_philhealth" ColumnName="user_has_philhealth" />
+                <ScalarProperty Name="user_has_sss" ColumnName="user_has_sss" />
+                <ScalarProperty Name="user_precinct" ColumnName="user_precinct" />
+                <ScalarProperty Name="user_registered" ColumnName="user_registered" />
+                <ScalarProperty Name="user_has_national_id" ColumnName="user_has_national_id" />
+                <ScalarProperty Name="user_other_vax" ColumnName="user_other_vax" />
+                <ScalarProperty Name="user_comorbidities" ColumnName="user_comorbidities" />
+                <ScalarProperty Name="user_is_covid_vax" ColumnName="user_is_covid_vax" />
+                <ScalarProperty Name="user_is_PWD" ColumnName="user_is_PWD" />
+                <ScalarProperty Name="user_is_malnourish" ColumnName="user_is_malnourish" />
+                <ScalarProperty Name="user_weight" ColumnName="user_weight" />
+                <ScalarProperty Name="user_height" ColumnName="user_height" />
+                <ScalarProperty Name="user_blood" ColumnName="user_blood" />
+                <ScalarProperty Name="user_tel_no" ColumnName="user_tel_no" />
+                <ScalarProperty Name="user_mobile_no" ColumnName="user_mobile_no" />
+                <ScalarProperty Name="user_zip_code" ColumnName="user_zip_code" />
+                <ScalarProperty Name="user_address_country" ColumnName="user_address_country" />
+                <ScalarProperty Name="user_address_province" ColumnName="user_address_province" />
+                <ScalarProperty Name="user_address_city" ColumnName="user_address_city" />
+                <ScalarProperty Name="user_address_brgy" ColumnName="user_address_brgy" />
+                <ScalarProperty Name="user_address_subdivision" ColumnName="user_address_subdivision" />
+                <ScalarProperty Name="user_address_street" ColumnName="user_address_street" />
+                <ScalarProperty Name="user_address_house_no" ColumnName="user_address_house_no" />
+                <ScalarProperty Name="user_address_unit_no" ColumnName="user_address_unit_no" />
+                <ScalarProperty Name="user_place_city" ColumnName="user_place_city" />
+                <ScalarProperty Name="user_place_province" ColumnName="user_place_province" />
+                <ScalarProperty Name="user_place_birth" ColumnName="user_place_birth" />
+                <ScalarProperty Name="user_religion" ColumnName="user_religion" />
+                <ScalarProperty Name="user_nationality" ColumnName="user_nationality" />
+                <ScalarProperty Name="user_civil_status" ColumnName="user_civil_status" />
+                <ScalarProperty Name="user_gender" ColumnName="user_gender" />
+                <ScalarProperty Name="user_date_birth" ColumnName="user_date_birth" />
+                <ScalarProperty Name="user_purokleader" ColumnName="user_purokleader" />
+                <ScalarProperty Name="user_sitio" ColumnName="user_sitio" />
+                <ScalarProperty Name="user_houseno" ColumnName="user_houseno" />
+                <ScalarProperty Name="user_purok" ColumnName="user_purok" />
+                <ScalarProperty Name="user_username" ColumnName="user_username" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_age" ColumnName="user_age" />
+                <ScalarProperty Name="user_suffix" ColumnName="user_suffix" />
+                <ScalarProperty Name="user_mname" ColumnName="user_mname" />
+                <ScalarProperty Name="user_fname" ColumnName="user_fname" />
+                <ScalarProperty Name="user_lname" ColumnName="user_lname" />
+                <ScalarProperty Name="user_detail_id" ColumnName="user_detail_id" />
+                <ScalarProperty Name="user_detail_auto_id" ColumnName="user_detail_auto_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

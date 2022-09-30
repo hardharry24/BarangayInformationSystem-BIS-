@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_bisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="civil_status">
+    <Key>
+      <PropertyRef Name="civil_status_id" />
+    </Key>
+    <Property Name="civil_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="civil_status_description" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="gender">
+    <Key>
+      <PropertyRef Name="gender_id" />
+    </Key>
+    <Property Name="gender_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gender_description" Type="nvarchar" MaxLength="50" />
+    <Property Name="gender_code" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="purok">
+    <Key>
+      <PropertyRef Name="purok_id" />
+    </Key>
+    <Property Name="purok_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="purok_no" Type="int" />
+    <Property Name="purok_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="purok_leader" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sitio">
+    <Key>
+      <PropertyRef Name="sitio_id" />
+    </Key>
+    <Property Name="sitio_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sitio_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_auto_id" />
+    </Key>
+    <Property Name="user_auto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_email" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_password" Type="nvarchar(max)" />
+    <Property Name="user_login_type" Type="int" />
+    <Property Name="user_access_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_is_verified" Type="int" />
+    <Property Name="user_status" Type="int" />
+  </EntityType>
+  <EntityType Name="user_detail">
+    <Key>
+      <PropertyRef Name="user_detail_auto_id" />
+    </Key>
+    <Property Name="user_detail_auto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_detail_id" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_lname" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_fname" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_mname" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_suffix" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_age" Type="int" />
+    <Property Name="user_email" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_username" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_purok" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_houseno" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_sitio" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_purokleader" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_date_birth" Type="date" />
+    <Property Name="user_gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_civil_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_nationality" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_religion" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_place_birth" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_place_province" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_place_city" Type="nvarchar" MaxLength="100" />
+    <Property Name="user_address_unit_no" Type="nvarchar(max)" />
+    <Property Name="user_address_house_no" Type="nvarchar(max)" />
+    <Property Name="user_address_street" Type="nvarchar(max)" />
+    <Property Name="user_address_subdivision" Type="nvarchar(max)" />
+    <Property Name="user_address_brgy" Type="nvarchar(max)" />
+    <Property Name="user_address_city" Type="nvarchar(max)" />
+    <Property Name="user_address_province" Type="nvarchar(max)" />
+    <Property Name="user_address_country" Type="nvarchar(max)" />
+    <Property Name="user_zip_code" Type="int" />
+    <Property Name="user_mobile_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_tel_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_blood" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_height" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_weight" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_is_malnourish" Type="int" />
+    <Property Name="user_is_PWD" Type="int" />
+    <Property Name="user_is_covid_vax" Type="int" />
+    <Property Name="user_comorbidities" Type="nvarchar(max)" />
+    <Property Name="user_other_vax" Type="nvarchar(max)" />
+    <Property Name="user_has_national_id" Type="int" />
+    <Property Name="user_registered" Type="int" />
+    <Property Name="user_precinct" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_has_sss" Type="int" />
+    <Property Name="user_has_philhealth" Type="int" />
+    <Property Name="user_is_4ps" Type="int" />
+    <Property Name="user_is_uct" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_others_indigent" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="db_bisModelStoreContainer">
+    <EntitySet Name="civil_status" EntityType="Self.civil_status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gender" EntityType="Self.gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="purok" EntityType="Self.purok" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sitio" EntityType="Self.sitio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_detail" EntityType="Self.user_detail" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
