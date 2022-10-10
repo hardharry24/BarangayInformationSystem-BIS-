@@ -44,7 +44,7 @@ namespace BarangayInformationSystem.Controllers
             model.response = new Response();
             var isRememberMe = String.IsNullOrEmpty(isRemember) ? false : true;
 
-            var userExist = db.user.Where(m => m.user_email.Equals(user.user_email)).FirstOrDefault();
+            var userExist = db.user.Where(m => m.user_name.Equals(user.user_name)).FirstOrDefault();
             if (userExist != null)
             {
                 if (userExist.user_is_verified == (int)BOOL.TRUE)
@@ -53,21 +53,28 @@ namespace BarangayInformationSystem.Controllers
                     Session["user_id"] = userExist.user_id;
 
                     if (isRememberMe)
-                        FormsAuthentication.SetAuthCookie(user.user_email, isRememberMe);
+                        FormsAuthentication.SetAuthCookie(user.user_name, isRememberMe);
 
                     var password = DecryptString(userExist.user_password);
 
                     if (password.Equals(user.user_password))
                     {
-                        if (!String.IsNullOrEmpty(Session["ReturnUrl"] as string))
+                        if (userExist.user_type == (Int32)USER_TYPE.ADMIN)
                         {
-                            var url = (Session["ReturnUrl"] as string);
-
-                            return RedirectToAction(url);
+                            return RedirectToAction("Dashboard","Admin");
                         }
                         else
                         {
-                            return RedirectToAction("Index");
+                            if (!String.IsNullOrEmpty(Session["ReturnUrl"] as string))
+                            {
+                                var url = (Session["ReturnUrl"] as string);
+
+                                return RedirectToAction(url);
+                            }
+                            else
+                            {
+                                return RedirectToAction("Index");
+                            }
                         }
                     }
                     else
@@ -284,44 +291,108 @@ namespace BarangayInformationSystem.Controllers
         public JsonResult AddUser(List<user_detail> memberList)
         {
             List<String> listOfIds = new List<string>();
-
+            var resonse = new Response();
             try
             {
                 foreach (var userDetail in memberList)
                 {
-                    var code = getUserAccessCode();
-                    var user = new user();
-                    user.user_id = getUserId();
-                    user.user_email = userDetail.user_email;
-                    user.user_name = userDetail.user_username;
-                    user.user_password = EncryptString(code);
-                    user.user_access_code = code;
-                    user.user_is_verified = (int)BOOL.TRUE;
-                    user.user_status = (int)STATUS.active;
-                    user.user_login_type = (int)LOGIN_OPTION.web;
-                    db.user.Add(user);
-                    db.SaveChanges();
-                    //
-                    listOfIds.Add(user.user_id);
+                    if (!String.IsNullOrEmpty(userDetail.user_fname) || !String.IsNullOrEmpty(userDetail.user_fname))
+                    {
+                        var code = getUserAccessCode();
+                        var user = new user();
+                        user.user_id = getUserId();
+                        user.user_email = userDetail.user_email;
+                        user.user_name = userDetail.user_username;
+                        user.user_password = EncryptString(code);
+                        user.user_access_code = code;
+                        user.user_is_verified = (int)BOOL.TRUE;
+                        user.user_status = (int)STATUS.active;
+                        user.user_login_type = (int)LOGIN_OPTION.web;
+                        db.user.Add(user);
+                        db.SaveChanges();
+                        //
+                        listOfIds.Add(user.user_id);
 
-                    userDetail.user_detail_id = user.user_id;
-                    db.user_detail.Add(userDetail);
-                    db.SaveChanges();
+                        userDetail.user_detail_id = user.user_id;
+                        db.user_detail.Add(userDetail);
+                        db.SaveChanges();
 
-                    //Send Email Confirmation
-                    String subject = "OPAO(BIS) - Account Registration";
-                    String body = GenerateWelcomeMessage(user, userDetail);
-                    String recipient = user.user_email;
+                        //Send Email Confirmation
+                        String subject = "OPAO(BIS) - Account Registration";
+                        String body = GenerateWelcomeMessage(user, userDetail);
+                        String recipient = user.user_email;
 
-                    Response res = SendEmail(recipient, body, subject);
+                        Response res = SendEmail(recipient, body, subject);
+                    }
+                    else
+                    {
+                        resonse.code = ERROR_CODE.ERROR;
+                        resonse.message = "Data Not Valid\n Please Reload the page";
+                    }
                 }
+                resonse.code = ERROR_CODE.SUCCESS;
+                resonse.message = listOfIds.Count + " record(s) Added.\nPlease check your email!";
+
             }
             catch (Exception ex)
             {
-
+                resonse.code = ERROR_CODE.ERROR;
+                resonse.message = ex.Data.ToString();
             }
             
-            return Json(listOfIds.Count); 
+            return Json(resonse, JsonRequestBehavior.AllowGet); 
+        }
+
+        public ActionResult CreateRequest(REQUEST_TYPE id)
+        {
+            var userId = Session["user_id"] as string;
+            var response = new Response();
+            string status = REQUEST_STATUS.PENDING;
+            string requestType = GetRequestType(id);
+            var isRequested = db.Request.Where(m => m.requestedBy == userId && m.requestType == requestType && m.requestStatus == status).FirstOrDefault();
+            if (isRequested == null)
+            {
+                var request = new Request();
+                request.requestDate = DateTime.Now;
+                request.requestedBy = userId;
+                request.requestType = GetRequestType(id);
+                request.requestStatus = REQUEST_STATUS.PENDING;
+                db.Request.Add(request);
+                db.SaveChanges();
+
+                response.code = ERROR_CODE.SUCCESS;
+                response.message = "Request Created!";
+            }
+            else
+            {
+                response.code = ERROR_CODE.ERROR;
+                response.message = "Still has current pending request!";
+            }
+            Session["response"] = response;
+
+            return RedirectToAction("MyRequest");
+        }
+        public ActionResult MyRequest()
+        {
+            if (String.IsNullOrEmpty(Session["response"] as string))
+            {
+                Response resp = (Response)Session["response"];
+                if (resp == null)
+                {
+                    ViewBag.success = "";
+                }
+                else
+                {
+                    ViewBag.success = resp.message;
+                }
+            }
+                
+
+            var strUserId = Session["user_id"] as string;
+            var model = new ViewModel();
+            model.requests = db.Request.Where(m => m.requestedBy == strUserId).ToList();
+
+            return View(model);
         }
     }
 }

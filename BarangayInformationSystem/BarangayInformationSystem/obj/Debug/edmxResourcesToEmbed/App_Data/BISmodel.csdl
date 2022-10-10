@@ -4,6 +4,7 @@
     <EntitySet Name="civil_status" EntityType="db_bisModel.civil_status" />
     <EntitySet Name="gender" EntityType="db_bisModel.gender" />
     <EntitySet Name="purok" EntityType="db_bisModel.purok" />
+    <EntitySet Name="Request" EntityType="db_bisModel.Request" />
     <EntitySet Name="sitio" EntityType="db_bisModel.sitio" />
     <EntitySet Name="sysdiagrams" EntityType="db_bisModel.sysdiagrams" />
     <EntitySet Name="user" EntityType="db_bisModel.user" />
@@ -32,6 +33,18 @@
     <Property Name="purok_no" Type="Int32" />
     <Property Name="purok_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="purok_leader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="requestId" />
+    </Key>
+    <Property Name="requestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="requestType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="requestedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="requestStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="requestApprovedby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="requestFile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="requestDate" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="sitio">
     <Key>
@@ -63,6 +76,7 @@
     <Property Name="user_access_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="user_is_verified" Type="Int32" />
     <Property Name="user_status" Type="Int32" />
+    <Property Name="user_type" Type="Int32" />
   </EntityType>
   <EntityType Name="user_detail">
     <Key>
@@ -86,6 +100,7 @@
     <Property Name="user_civil_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="user_nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="user_religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_place_region" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="user_place_birth" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="user_place_province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="user_place_city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -114,7 +129,10 @@
     <Property Name="user_has_sss" Type="Int32" />
     <Property Name="user_has_philhealth" Type="Int32" />
     <Property Name="user_is_4ps" Type="Int32" />
-    <Property Name="user_is_uct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="user_others_indigent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_is_uct" Type="Int32" />
+    <Property Name="user_indigent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_other_income" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_member_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="user_status" Type="Int32" />
   </EntityType>
 </Schema>

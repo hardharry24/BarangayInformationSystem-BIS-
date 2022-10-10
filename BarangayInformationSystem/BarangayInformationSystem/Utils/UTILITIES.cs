@@ -37,5 +37,25 @@ namespace BarangayInformationSystem.Utils
         FALSE = 0,
         TRUE = 1
     }
-
+    public enum USER_TYPE
+    {
+        USER = 0,
+        ADMIN = 1
+    }
+    public enum REQUEST_TYPE
+    {
+        BRGYCERTIFICATE = 0,
+        CERTIFICATION = 1
+    }
+    public class REQUEST_TYPE_DETAIL
+    {
+        public const string BRGYCERTIFICATE = "BRGY CERTIFICATE";
+        public const string CERTIFICATION = "CERTIFICATION";
+    }
+    public class REQUEST_STATUS
+    {
+        public const string REJECTED = "REJECTED";
+        public const string PENDING = "PENDING";
+        public const string APPROVED = "PENDING";
+    }
 }

@@ -28,6 +28,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Request">
+      <EntityTypeMapping TypeName="db_bisModel.Request">
+        <MappingFragment StoreEntitySet="Request">
+          <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+          <ScalarProperty Name="requestFile" ColumnName="requestFile" />
+          <ScalarProperty Name="requestApprovedby" ColumnName="requestApprovedby" />
+          <ScalarProperty Name="requestStatus" ColumnName="requestStatus" />
+          <ScalarProperty Name="requestedBy" ColumnName="requestedBy" />
+          <ScalarProperty Name="requestType" ColumnName="requestType" />
+          <ScalarProperty Name="requestId" ColumnName="requestId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sitio">
       <EntityTypeMapping TypeName="db_bisModel.sitio">
         <MappingFragment StoreEntitySet="sitio">
@@ -50,6 +63,7 @@
     <EntitySetMapping Name="user">
       <EntityTypeMapping TypeName="db_bisModel.user">
         <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="user_type" ColumnName="user_type" />
           <ScalarProperty Name="user_status" ColumnName="user_status" />
           <ScalarProperty Name="user_is_verified" ColumnName="user_is_verified" />
           <ScalarProperty Name="user_access_code" ColumnName="user_access_code" />
@@ -65,7 +79,10 @@
     <EntitySetMapping Name="user_detail">
       <EntityTypeMapping TypeName="db_bisModel.user_detail">
         <MappingFragment StoreEntitySet="user_detail">
-          <ScalarProperty Name="user_others_indigent" ColumnName="user_others_indigent" />
+          <ScalarProperty Name="user_status" ColumnName="user_status" />
+          <ScalarProperty Name="user_member_type" ColumnName="user_member_type" />
+          <ScalarProperty Name="user_other_income" ColumnName="user_other_income" />
+          <ScalarProperty Name="user_indigent" ColumnName="user_indigent" />
           <ScalarProperty Name="user_is_uct" ColumnName="user_is_uct" />
           <ScalarProperty Name="user_is_4ps" ColumnName="user_is_4ps" />
           <ScalarProperty Name="user_has_philhealth" ColumnName="user_has_philhealth" />
@@ -95,6 +112,7 @@
           <ScalarProperty Name="user_place_city" ColumnName="user_place_city" />
           <ScalarProperty Name="user_place_province" ColumnName="user_place_province" />
           <ScalarProperty Name="user_place_birth" ColumnName="user_place_birth" />
+          <ScalarProperty Name="user_place_region" ColumnName="user_place_region" />
           <ScalarProperty Name="user_religion" ColumnName="user_religion" />
           <ScalarProperty Name="user_nationality" ColumnName="user_nationality" />
           <ScalarProperty Name="user_civil_status" ColumnName="user_civil_status" />

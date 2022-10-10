@@ -42,18 +42,18 @@
         <div class="container d-flex align-items-center justify-content-between">
 
             <div class="logo">
-                <h1><a href="#">Barangay Information System</a></h1>
+                <h1><a href="~/Home/Index">Barangay Information System</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="~/Content/assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto" href="#">Home</a></li>
+                    <li><a class="nav-link scrollto" href="~/Home/Index">Home</a></li>
                     @if (!String.IsNullOrEmpty(HttpContext.Current.Session["user_id"] as string))
                     {
                         <li><a class="nav-link scrollto" href="#about">About</a></li>
-                        <li><a class="nav-link scrollto " href="#products">Products</a></li>
+                        <li><a class="nav-link @(ViewBag.Title == "My Request" ? "active": "")" href="~/Home/MyRequest">My Request</a></li>
                         <li><a class="nav-link @(ViewBag.Title == "My Profile"? "active": "")" href="~/Home/MyProfile">Profile</a></li>
                     }
                     <li>

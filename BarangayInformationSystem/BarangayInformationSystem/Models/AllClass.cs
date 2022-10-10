@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BarangayInformationSystem.App_Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,5 +14,10 @@ namespace BarangayInformationSystem.Models
 
         public String email { get; set; }
         public String username { get; set; }
+    }
+    public class UserInfo
+    {
+        public user user { get; set; }
+        public user_detail user_detail { get; set; }
     }
 }

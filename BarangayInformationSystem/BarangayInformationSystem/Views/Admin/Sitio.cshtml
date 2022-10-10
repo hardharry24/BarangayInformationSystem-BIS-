@@ -1,0 +1,144 @@
+﻿@model BarangayInformationSystem.Models.ViewModel
+@{
+    ViewBag.Title = "Sitio";
+    ViewBag.Title1 = "Sitio";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<div class="col-sm-12">
+    <h2>List of Sition of Barangay Opao</h2><br />
+    <a href="#" class="btn btn-primary" onclick="create()">NEW</a>
+    <div>
+        <table class="table table-responsive-sm table-striped" style="width: 100%;">
+            <tr style="background-color: deepskyblue; color:white;">
+                <th>Seq #</th>
+                <th>Sitio Name</th>
+                <th>Action</th>
+            </tr>@{ var i = 0;}
+            @foreach (var sitio in Model.sitios)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>@sitio.sitio_name</td>
+                    <td>
+                        @*<a href="#" class="btn btn-success" onclick="userInfo(@user_detail.user.user_auto_id)"><i class="fa fa-eye"></i></a>*@
+                        <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                        <a href="#" class="btn btn-danger" onclick="onDelete(@sitio.sitio_id)"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCreate">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Purok Details</h2>
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+
+            </div>
+            <div class="modal-body" id="modalInfoMainDiv">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Sitio Name </label>
+                        <input type="text" name="name" value="" class="form-control" id="sitioname" />
+                    </div>
+                    <div class="col-md-12">
+                        <br />
+                        <button class="btn btn-primary" onclick="saveSitio()">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    function create()
+    {
+        //alert("Hello");
+        //$("#modalCreate").show();
+        $("#modalCreate").modal("show");
+    }
+    function saveSitio()
+    {
+        var sitioname = $("#sitioname").val();
+
+        //var purok = new FormData();
+        //purok.append("purok_no", purokno);
+        //purok.append("purok_name", purokname);
+        //purok.append("purok_leader", purokleader);
+        var sitio = {};
+        sitio.sitio_name = sitioname;
+
+        if (validateTxt(sitioname) ) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/AddSitio",
+                data: JSON.stringify(sitio),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (r) {
+                    var resp = JSON.parse(JSON.stringify(r));
+                    if (resp.code) {
+                        swal({
+                            title: "Message",
+                            text: resp.message,
+                            icon: "success",
+                            buttons: true,
+                        })
+                       .then((willDelete) => {
+                           if (willDelete) {
+                               window.location = "/Admin/Sitio";
+                           }
+                       });
+                    }
+                    else {
+                        swal({
+                            title: "Message",
+                            text: resp.message,
+                            icon: "error",
+                            buttons: true,
+                        })
+                    }
+                }
+            });
+        }
+
+    }
+    function validateTxt(str) {
+        if (str == "" || str == null)
+        {
+            swal({
+                title: "Message",
+                text: "Empty Field!",
+                icon: "error",
+                buttons: true,
+            });
+            return false;
+        }
+        return true;
+    }
+
+    function onDelete(id) {
+        swal({
+            title: "Message",
+            text: "Confirm Delete?",
+            icon: "info",
+            buttons: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/Admin/RemoveSitio/" + id;
+            }
+        });
+    }
+
+</script>

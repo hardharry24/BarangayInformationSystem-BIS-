@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Admin - Barangay Information System</title>
+    <meta name="description" content="Admin - Barangay Information System">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Your website">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/Content/admin/assets/images/favicon.ico">
+
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome CSS -->
+    <link href="~/Content/admin/assets/font-awesome/css/all.css" rel="stylesheet" type="text/css" />
+
+    <!-- Custom CSS -->
+    <link href="~/Content/admin/assets/css/style.css" rel="stylesheet" type="text/css" />
+    
+    <!-- BEGIN CSS for this page -->
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/assets/plugins/chart.js/Chart.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/admin/assets/plugins/datatables/datatables.min.css" />
+    <!-- END CSS for this page -->
+</head>
+
+<body class="adminbody">
+
+    <div id="main">
+
+        <!-- top bar navigation -->
+        <div class="headerbar">
+
+            <!-- LOGO -->
+            <div class="headerbar-left">
+                <a href="~/Home/Dashboard" class="logo">
+                    <span>Admin Panel (BIS)</span>
+                </a>
+            </div>
+
+            <nav class="navbar-custom">
+
+                <ul class="list-inline float-right mb-0">
+                    <li class="list-inline-item dropdown notif">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </a>
+                    </li>
+
+
+                    <li class="list-inline-item dropdown notif">
+                        <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
+                            <img src="~/Content/admin/assets/images/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h5 class="text-overflow">
+                                    <small>Hello, @HttpContext.Current.Session["user_id"]</small>
+                                </h5>
+                            </div>
+
+                            <!-- item-->
+                            <a href="#" class="dropdown-item notify-item">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="~/Admin/Logout" class="dropdown-item notify-item">
+                                <i class="fas fa-power-off"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="list-inline menu-left mb-0">
+                    <li class="float-left">
+                        <button class="button-menu-mobile open-left">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+        <!-- End Navigation -->
+        <!-- Left Sidebar -->
+        <div class="left main-sidebar">
+
+            <div class="sidebar-inner leftscroll">
+
+                <div id="sidebar-menu">
+
+                    <ul>
+                        <li class="submenu">
+                            <a  class="@((ViewBag.Title1 == "Dashboard") ? "active" : "" )" href="~/Admin/Dashboard">
+                                <i class="fas fa-bars"></i>
+                                <span> Dashboard </span>
+                            </a>
+                        </li>
+                        <li class="submenu">
+                            <a class="@((ViewBag.Title1 == "Request") ? "active" : "" )" href="~/Admin/_Request">
+                                <i class="fas fa-list-alt"></i>
+                                <span> Request </span>
+                            </a>
+                        </li>
+                        <li class="submenu">
+                            <a  class="@((ViewBag.Title1 == "User") ? "active" : "" )" href="~/Admin/Users">
+                                <i class="fas fa-user"></i>
+                                <span> Users </span>
+                            </a>
+                        </li>
+
+
+                        <li class="submenu">
+                            <a  class="@((ViewBag.Title1 == "Purok") ? "active" : "" )" href="~/Admin/Purok">
+                                <i class="fas fa-briefcase"></i>
+                                <span> Purok </span>
+                            </a>
+                        </li>
+
+                        <li class="submenu">
+                            <a  class="@((ViewBag.Title1 == "Sitio") ? "active" : "" )" href="~/Admin/Sitio">
+                                <i class="fas fa-list-alt"></i>
+                                <span> Sitio </span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <div class="clearfix"></div>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+            </div>
+
+        </div>
+        <!-- End Sidebar -->
+
+        <div class="content-page">
+
+            <!-- Start content -->
+            <div class="content">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="breadcrumb-holder">
+                                <h1 class="main-title float-left">@ViewBag.Title</h1>
+                                <ol class="breadcrumb float-right">
+                                    <li class="breadcrumb-item">Admin</li>
+                                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                                </ol>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                    <div class="row">
+                        @RenderBody()
+                       
+                    </div>
+                    <!-- end row-->
+
+                </div>
+                <!-- END container-fluid -->
+
+            </div>
+            <!-- END content -->
+
+        </div>
+        <!-- END content-page -->
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Advance Restaurant Exam</p>
+        </footer>
+
+        <script src="~/Content/admin/assets/js/modernizr.min.js"></script>
+        <script src="~/Content/admin/assets/js/jquery.min.js"></script>
+        <script src="~/Content/admin/assets/js/moment.min.js"></script>
+
+        <script src="~/Content/admin/assets/js/popper.min.js"></script>
+        <script src="~/Content/admin/assets/js/bootstrap.min.js"></script>
+
+        <script src="~/Content/admin/assets/js/detect.js"></script>
+        <script src="~/Content/admin/assets/js/fastclick.js"></script>
+        <script src="~/Content/admin/assets/js/jquery.blockUI.js"></script>
+        <script src="~/Content/admin/assets/js/jquery.nicescroll.js"></script>
+
+        <!-- App js -->
+        <script src="~/Content/admin/assets/js/admin.js"></script>
+
+    </div>
+    <!-- END main -->
+    <!-- BEGIN Java Script for this page -->
+    <script src="~/Content/admin/assets/plugins/chart.js/Chart.min.js"></script>
+    <script src="~/Content/admin/assets/plugins/datatables/datatables.min.js"></script>
+
+    <!-- Counter-Up-->
+    <script src="~/Content/admin/assets/plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="~/Content/admin/assets/plugins/counterup/jquery.counterup.min.js"></script>
+
+    <!-- dataTabled data -->
+    <script src="~/Content/admin/assets/data/data_datatables.js"></script>
+
+    <!-- Charts data -->
+    <script src="~/Content/admin/assets/data/data_charts_dashboard.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        $(document).on('ready', function() {
+            // data-tables
+            $('#dataTable').DataTable({
+                data: dataSet,
+                columns: [{
+                    title: "Name"
+                }, {
+                    title: "Position"
+                }, {
+                    title: "Office"
+                }, {
+                    title: "Extn."
+                }, {
+                    title: "Date"
+                }, {
+                    title: "Salary"
+                }]
+            });
+
+            // counter-up
+            $('.counter').counterUp({
+                delay: 10,
+                time: 600
+            });
+        });
+    </script>
+    <!-- END Java Script for this page -->
+
+</body>
+
+</html>

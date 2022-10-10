@@ -29,6 +29,18 @@
           <Property Name="purok_name" Type="nvarchar" MaxLength="50" />
           <Property Name="purok_leader" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="requestId" />
+          </Key>
+          <Property Name="requestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="requestType" Type="nvarchar" MaxLength="50" />
+          <Property Name="requestedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="requestStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="requestApprovedby" Type="nvarchar" MaxLength="50" />
+          <Property Name="requestFile" Type="nvarchar" MaxLength="100" />
+          <Property Name="requestDate" Type="date" />
+        </EntityType>
         <EntityType Name="sitio">
           <Key>
             <PropertyRef Name="sitio_id" />
@@ -59,6 +71,7 @@
           <Property Name="user_access_code" Type="nvarchar" MaxLength="50" />
           <Property Name="user_is_verified" Type="int" />
           <Property Name="user_status" Type="int" />
+          <Property Name="user_type" Type="int" />
         </EntityType>
         <EntityType Name="user_detail">
           <Key>
@@ -82,6 +95,7 @@
           <Property Name="user_civil_status" Type="nvarchar" MaxLength="50" />
           <Property Name="user_nationality" Type="nvarchar" MaxLength="50" />
           <Property Name="user_religion" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_place_region" Type="nvarchar" MaxLength="100" />
           <Property Name="user_place_birth" Type="nvarchar" MaxLength="100" />
           <Property Name="user_place_province" Type="nvarchar" MaxLength="100" />
           <Property Name="user_place_city" Type="nvarchar" MaxLength="100" />
@@ -110,13 +124,17 @@
           <Property Name="user_has_sss" Type="int" />
           <Property Name="user_has_philhealth" Type="int" />
           <Property Name="user_is_4ps" Type="int" />
-          <Property Name="user_is_uct" Type="nvarchar" MaxLength="50" />
-          <Property Name="user_others_indigent" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_is_uct" Type="int" />
+          <Property Name="user_indigent" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_other_income" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_member_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_status" Type="int" />
         </EntityType>
         <EntityContainer Name="db_bisModelStoreContainer">
           <EntitySet Name="civil_status" EntityType="Self.civil_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="gender" EntityType="Self.gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="purok" EntityType="Self.purok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sitio" EntityType="Self.sitio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
@@ -130,6 +148,7 @@
           <EntitySet Name="civil_status" EntityType="db_bisModel.civil_status" />
           <EntitySet Name="gender" EntityType="db_bisModel.gender" />
           <EntitySet Name="purok" EntityType="db_bisModel.purok" />
+          <EntitySet Name="Request" EntityType="db_bisModel.Request" />
           <EntitySet Name="sitio" EntityType="db_bisModel.sitio" />
           <EntitySet Name="sysdiagrams" EntityType="db_bisModel.sysdiagrams" />
           <EntitySet Name="user" EntityType="db_bisModel.user" />
@@ -158,6 +177,18 @@
           <Property Name="purok_no" Type="Int32" />
           <Property Name="purok_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="purok_leader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="requestId" />
+          </Key>
+          <Property Name="requestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="requestType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="requestedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="requestStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="requestApprovedby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="requestFile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="requestDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="sitio">
           <Key>
@@ -189,6 +220,7 @@
           <Property Name="user_access_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="user_is_verified" Type="Int32" />
           <Property Name="user_status" Type="Int32" />
+          <Property Name="user_type" Type="Int32" />
         </EntityType>
         <EntityType Name="user_detail">
           <Key>
@@ -212,6 +244,7 @@
           <Property Name="user_civil_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="user_nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="user_religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_place_region" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="user_place_birth" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="user_place_province" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="user_place_city" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -240,8 +273,11 @@
           <Property Name="user_has_sss" Type="Int32" />
           <Property Name="user_has_philhealth" Type="Int32" />
           <Property Name="user_is_4ps" Type="Int32" />
-          <Property Name="user_is_uct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="user_others_indigent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_is_uct" Type="Int32" />
+          <Property Name="user_indigent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_other_income" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_member_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_status" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -276,6 +312,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Request">
+            <EntityTypeMapping TypeName="db_bisModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="requestDate" ColumnName="requestDate" />
+                <ScalarProperty Name="requestFile" ColumnName="requestFile" />
+                <ScalarProperty Name="requestApprovedby" ColumnName="requestApprovedby" />
+                <ScalarProperty Name="requestStatus" ColumnName="requestStatus" />
+                <ScalarProperty Name="requestedBy" ColumnName="requestedBy" />
+                <ScalarProperty Name="requestType" ColumnName="requestType" />
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sitio">
             <EntityTypeMapping TypeName="db_bisModel.sitio">
               <MappingFragment StoreEntitySet="sitio">
@@ -298,6 +347,7 @@
           <EntitySetMapping Name="user">
             <EntityTypeMapping TypeName="db_bisModel.user">
               <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="user_type" ColumnName="user_type" />
                 <ScalarProperty Name="user_status" ColumnName="user_status" />
                 <ScalarProperty Name="user_is_verified" ColumnName="user_is_verified" />
                 <ScalarProperty Name="user_access_code" ColumnName="user_access_code" />
@@ -313,7 +363,10 @@
           <EntitySetMapping Name="user_detail">
             <EntityTypeMapping TypeName="db_bisModel.user_detail">
               <MappingFragment StoreEntitySet="user_detail">
-                <ScalarProperty Name="user_others_indigent" ColumnName="user_others_indigent" />
+                <ScalarProperty Name="user_status" ColumnName="user_status" />
+                <ScalarProperty Name="user_member_type" ColumnName="user_member_type" />
+                <ScalarProperty Name="user_other_income" ColumnName="user_other_income" />
+                <ScalarProperty Name="user_indigent" ColumnName="user_indigent" />
                 <ScalarProperty Name="user_is_uct" ColumnName="user_is_uct" />
                 <ScalarProperty Name="user_is_4ps" ColumnName="user_is_4ps" />
                 <ScalarProperty Name="user_has_philhealth" ColumnName="user_has_philhealth" />
@@ -343,6 +396,7 @@
                 <ScalarProperty Name="user_place_city" ColumnName="user_place_city" />
                 <ScalarProperty Name="user_place_province" ColumnName="user_place_province" />
                 <ScalarProperty Name="user_place_birth" ColumnName="user_place_birth" />
+                <ScalarProperty Name="user_place_region" ColumnName="user_place_region" />
                 <ScalarProperty Name="user_religion" ColumnName="user_religion" />
                 <ScalarProperty Name="user_nationality" ColumnName="user_nationality" />
                 <ScalarProperty Name="user_civil_status" ColumnName="user_civil_status" />

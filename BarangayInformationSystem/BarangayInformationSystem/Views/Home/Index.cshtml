@@ -24,44 +24,21 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="card-box bg-blue">
                             <div class="inner">
-                                <h3> INDIGENCY </h3>
-                                <p>  </p>
+                                <h3> Request </h3>
+                                <p> <br/> </p>
                             </div>
-                            <div class="icon">
+                            <div class="icon" >
                                 <i class="fa fa-file" aria-hidden="true"></i>
                             </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                            <a href="#" class="card-box-footer" onclick="onShowOption()">View More <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+                   
                     <div class="col-lg-3 col-sm-6">
                         <div class="card-box bg-blue">
                             <div class="inner">
-                                <h3> ENDORSEMENT </h3>
-                                <p>  </p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-file" aria-hidden="true"></i>
-                            </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card-box bg-blue">
-                            <div class="inner">
-                                <h3> SUMMON </h3>
-                                <p>  </p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-file" aria-hidden="true"></i>
-                            </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card-box bg-blue">
-                            <div class="inner">
-                                <h3> RESIDENCY </h3>
-                                <p>  </p>
+                                <h3> CONCERN </h3>
+                                <p> <br /> </p>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-file" aria-hidden="true"></i>
@@ -74,39 +51,64 @@
             </div>
 
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card-box bg-blue">
-                            <div class="inner">
-                                <h3> CLEARANCE </h3>
-                                <p>  </p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-file" aria-hidden="true"></i>
-                            </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="card-box bg-blue">
-                            <div class="inner">
-                                <h3> INDIGENCY </h3>
-                                <p>  </p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-file" aria-hidden="true"></i>
-                            </div>
-                            <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
 
 
 <script src="~/Content/assets/js/loginScript.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+    function onShowOption()
+    {
+        Swal.fire({
+            title: 'Select Type of Request',
+            input: 'select',
+            inputOptions: {
+                '0': 'Brgy Certificate',
+                '1': 'Certification'
+            },
+            inputPlaceholder: 'Select',
+            showCancelButton: true,
+            inputValidator: function (value) {
+                return new Promise(function (resolve, reject) {
+                    if (value !== '') {
+                        resolve();
+                    } else {
+                        resolve('You need to select a type of request');
+                    }
+                });
+            }
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                if (result.value)
+                {
+                    //Brgy Certificate
+                    if (result.value == 0)
+                    {
+                        window.location = "/Home/CreateRequest/0";
+                    }
+                    else if (result.value == 1)
+                    {
+                        window.location = "/Home/CreateRequest/1";
+                    }
+                }
+                //Swal.fire({
+                //    icon: 'success',
+                //    html: 'You selected: ' + result.value
+                //});
+            }
+        });
+        //Swal.fire({
+        //    title: "<i>Title</i>",
+        //    html: "Testno  sporocilo za objekt: <b>test</b>",
+        //    confirmButtonText: "V <u>redu</u>",
+        //});
+        //swal("Write something here:", {
+        //    content: "select",
+        //})
+        //.then((value) => {
+        //    swal(`You typed: ${value}`);
+        //});
+    }
+</script>

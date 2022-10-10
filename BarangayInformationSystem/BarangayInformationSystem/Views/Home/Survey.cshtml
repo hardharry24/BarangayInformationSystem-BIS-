@@ -255,8 +255,16 @@
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    Others
-                    <input type="text" class="form-control" name="name" value="" id="othersIndigent"/>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="Indigent">
+                        <label class="form-check-label" for="Indigent">
+                            Indigent?
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    Other Income
+                    <input type="text" class="form-control" name="name" value="" id="otherIncome" />
                 </div>
             </div>
         </div>
@@ -423,8 +431,11 @@
         var Philhealth = document.getElementById("PhilHealth").checked ? 1 : 0;
         var _4ps = document.getElementById("4ps").checked ? 1 : 0;
         var UCT = document.getElementById("UCT").checked ? 1 : 0;
-        var othersIndigent = $("#othersIndigent");
+        var indigent = document.getElementById("Indigent").checked ? 1 : 0;
+        var otherIncome = $("#otherIncome");
 
+
+        var region = $("#region");
         //
         var purok = $("#purok").val();
         var houseno = $("#houseno").val();
@@ -436,7 +447,7 @@
             && validateTxtbx(blood.val(), "Blood Type") && validateTxtbx(height.val(), "Height") && validateTxtbx(weight.val(), "Weight") && validateTxtbx(txtlastname.val(), "Lastname") && validateTxtbx(bdate.val(), "Birth Date")
             && validateSelect(memberType.val(), "Member Type") && validateSelect(gender.val(), "Gender") && validateSelect(civilS.val(), "Civil Status")
             && validateSelect(purok, "Purok") && validateTxtbx(houseno, "House Number") && validateTxtbx(purokleader, "Purok Leader") && validateSelect(sitio, "Sitio")
-            && validateUsername(username.val())   && validateEmail(email.val()))
+            && validateUsername(username.val())   /*&& validateEmail(email.val())*/)
         {
             //construct data for validation
             var model = {};
@@ -486,11 +497,13 @@
                         member.user_gender = gender.val();
                         member.user_date_birth = bdate.val();
                         member.user_civil_status = civilS.val();
+                        member.user_place_region = region.val();
                         member.user_place_province = province.val();
                         member.user_place_city = city.val();
                         member.user_mobile_no = cp.val();
                         member.user_email = email.val();
                         member.user_username = username.val();
+                        member.user_tel_no = cp.val();
                         member.user_blood = blood.val();
                         member.user_height = height.val();
                         member.user_blood = blood.val();
@@ -507,11 +520,13 @@
                         member.user_has_philhealth = Philhealth;
                         member.user_is_4ps = _4ps;
                         member.user_is_uct = UCT;
-                        member.user_others_indigent = othersIndigent.val();
+                        member.user_indigent = indigent;
+                        member.user_other_income = otherIncome.val();
                         member.user_purok = purok;
                         member.user_houseno = houseno;
                         member.user_sitio = sitio;
                         member.user_purokleader = purokleader;
+                        member.user_member_type = memberType.val();
                         memberList.push(member);
 
                         //console.log(memberList);
@@ -544,8 +559,10 @@
     function saveAll() {
 
         if (memberList.length >= 1) {
-            var customModel = new Array();
-
+            //var customModel = new Array();
+            //var data = JSON.stringify(memberList);
+           // console.log(memberList);
+            //console.log(memberList);
             //Send the JSON array to Controller using AJAX.
             $.ajax({
                 type: "POST",
@@ -554,19 +571,23 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (r) {
-                    //alert(r + " record(s) inserted.");
-                    swal({
-                        title: "Message",
-                        text: r + " record(s) Added.\nPlease check your email!",
-                        icon: "success",
-                        buttons: true,
-                    })
-                   .then((willDelete) => {
-                       if (willDelete) {
-                           window.location = "/Home/Login";
-                       }
-                   });
-                    //MsgBox("Message", r + " record(s) Added.", "success");
+                    var resp = JSON.parse(JSON.stringify(response));
+                    if (resp.code) {
+                        swal({
+                            title: "Message",
+                            text: resp.message,
+                            icon: "success",
+                            buttons: true,
+                        })
+                       .then((willDelete) => {
+                           if (willDelete) {
+                               window.location = "/Home/Login";
+                           }
+                       });
+                    }
+                    else {
+                        MsgBox("Message", resp.message, "error");
+                    }
                 }
             });
         }
@@ -674,14 +695,14 @@
     {
         var result = false;
 
-        for (var i = 0; i < memberList.length; i++) {
-            member = memberList[i];
-            if (member.user_email.toLowerCase() == strVal.toLowerCase()) {
-                MsgBox('Oops...', "Email Already Added!", "error");
-                return false;
-        //        result = true;
-            }
-        }
+        //for (var i = 0; i < memberList.length; i++) {
+        //    member = memberList[i];
+        //    if (member.user_email.toLowerCase() == strVal.toLowerCase()) {
+        //        MsgBox('Oops...', "Email Already Added!", "error");
+        //        return false;
+        ////        result = true;
+        //    }
+        //}
       
         return true;
     }

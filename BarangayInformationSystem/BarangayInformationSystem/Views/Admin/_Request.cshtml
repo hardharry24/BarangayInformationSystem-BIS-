@@ -1,0 +1,48 @@
+﻿@model BarangayInformationSystem.Models.ViewModel
+@{
+    ViewBag.Title1 = "Request";
+    ViewBag.Title = "Request";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<div class="col-sm-12">
+    <h2>Request</h2>
+    <table class="table table-responsive-sm table-striped" style="width: 100%;">
+        <tr style="background-color: deepskyblue; color:white;">
+            <th>Seq #</th>
+            <th>Request Type</th>
+            <th>Date Requested</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>@{ var i = 0;}
+        @foreach (var request in Model.requests)
+        {
+            i++;
+            <tr>
+                <td>@i</td>
+                <td>@request.requestType</td>
+                <td>@request.requestDate</td>
+                <td>
+                    
+                    <span class="badge badge-secondary">@request.requestStatus</span>
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            Action
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Approve</a></li>
+                            <li><a href="#">Reject</a></li>
+                            <li><a href="#">Remove</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+

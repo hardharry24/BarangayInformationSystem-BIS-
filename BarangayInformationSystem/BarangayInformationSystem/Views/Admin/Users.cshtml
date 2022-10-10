@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+    ViewBag.Title1 = "User";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@model  BarangayInformationSystem.Models.ViewModel
+<div class="col-sm-12">
+    <h2>Master List</h2><br />
+    <div>
+        <table class="table table-responsive-sm table-striped" style="width: 100%;">
+            <tr style="background-color: deepskyblue; color:white;">
+                <th>UserId</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>MI</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Purok</th>
+                <th>Action</th>
+            </tr>
+            @foreach (var user_detail in Model.UserInfos)
+            {
+                <tr>
+                    <td>@user_detail.user_detail.user_detail_id</td>
+                    <td>@user_detail.user_detail.user_lname</td>
+                    <td>@user_detail.user_detail.user_fname</td>
+                    <td>@user_detail.user_detail.user_mname</td>
+                    <td>@user_detail.user_detail.user_gender</td>
+                    <td>@user_detail.user_detail.user_age</td>
+                    <td>@user_detail.user_detail.user_username</td>
+                    <td>@user_detail.user_detail.user_email</td>
+                    <td>@user_detail.user_detail.user_purok</td>
+                    <td>
+                        <a href="#" class="btn btn-success" onclick="userInfo(@user_detail.user.user_auto_id)"><i class="fa fa-eye"></i></a>
+                        <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="modalInfo">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+            </div>
+            <div class="modal-body" id="modalInfoMainDiv">
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    var userInfo = function (id) {
+
+        var url = "/Admin/UserInfo?id=" + id;
+
+        $("#modalInfoMainDiv").load(url, function () {
+            $("#modalInfo").modal("show");
+
+        })
+
+    }
+</script>

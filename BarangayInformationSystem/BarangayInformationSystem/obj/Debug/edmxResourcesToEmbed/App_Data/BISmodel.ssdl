@@ -24,6 +24,18 @@
     <Property Name="purok_name" Type="nvarchar" MaxLength="50" />
     <Property Name="purok_leader" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="requestId" />
+    </Key>
+    <Property Name="requestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="requestType" Type="nvarchar" MaxLength="50" />
+    <Property Name="requestedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="requestStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="requestApprovedby" Type="nvarchar" MaxLength="50" />
+    <Property Name="requestFile" Type="nvarchar" MaxLength="100" />
+    <Property Name="requestDate" Type="date" />
+  </EntityType>
   <EntityType Name="sitio">
     <Key>
       <PropertyRef Name="sitio_id" />
@@ -54,6 +66,7 @@
     <Property Name="user_access_code" Type="nvarchar" MaxLength="50" />
     <Property Name="user_is_verified" Type="int" />
     <Property Name="user_status" Type="int" />
+    <Property Name="user_type" Type="int" />
   </EntityType>
   <EntityType Name="user_detail">
     <Key>
@@ -77,6 +90,7 @@
     <Property Name="user_civil_status" Type="nvarchar" MaxLength="50" />
     <Property Name="user_nationality" Type="nvarchar" MaxLength="50" />
     <Property Name="user_religion" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_place_region" Type="nvarchar" MaxLength="100" />
     <Property Name="user_place_birth" Type="nvarchar" MaxLength="100" />
     <Property Name="user_place_province" Type="nvarchar" MaxLength="100" />
     <Property Name="user_place_city" Type="nvarchar" MaxLength="100" />
@@ -105,13 +119,17 @@
     <Property Name="user_has_sss" Type="int" />
     <Property Name="user_has_philhealth" Type="int" />
     <Property Name="user_is_4ps" Type="int" />
-    <Property Name="user_is_uct" Type="nvarchar" MaxLength="50" />
-    <Property Name="user_others_indigent" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_is_uct" Type="int" />
+    <Property Name="user_indigent" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_other_income" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_member_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_status" Type="int" />
   </EntityType>
   <EntityContainer Name="db_bisModelStoreContainer">
     <EntitySet Name="civil_status" EntityType="Self.civil_status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="gender" EntityType="Self.gender" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="purok" EntityType="Self.purok" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sitio" EntityType="Self.sitio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />

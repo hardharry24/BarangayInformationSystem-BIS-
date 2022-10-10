@@ -32,6 +32,7 @@ namespace BarangayInformationSystem.App_Data
         public string user_civil_status { get; set; }
         public string user_nationality { get; set; }
         public string user_religion { get; set; }
+        public string user_place_region { get; set; }
         public string user_place_birth { get; set; }
         public string user_place_province { get; set; }
         public string user_place_city { get; set; }
@@ -60,7 +61,10 @@ namespace BarangayInformationSystem.App_Data
         public Nullable<int> user_has_sss { get; set; }
         public Nullable<int> user_has_philhealth { get; set; }
         public Nullable<int> user_is_4ps { get; set; }
-        public string user_is_uct { get; set; }
-        public string user_others_indigent { get; set; }
+        public Nullable<int> user_is_uct { get; set; }
+        public string user_indigent { get; set; }
+        public string user_other_income { get; set; }
+        public string user_member_type { get; set; }
+        public Nullable<int> user_status { get; set; }
     }
 }

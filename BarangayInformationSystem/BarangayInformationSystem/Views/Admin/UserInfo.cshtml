@@ -1,0 +1,203 @@
+﻿@model BarangayInformationSystem.Models.ViewModel
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="row mb-5 gx-5">
+            <div class="col-xxl-6 mb-5 mb-xxl-0">
+                <div class="bg-secondary-soft px-4 py-5 rounded">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <h4 class="mb-4 mt-0">Personal Information</h4><br />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">First Name </label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_fname, new { @placeholder = "", @id = "personal", @class = "form-control personal", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Last Name </label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_lname, new { @placeholder = "", @id = "personal", @class = "form-control personal", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Middle Name</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_mname, new { @placeholder = "", @id = "personal", @class = "form-control", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Suffix (Ex. Jr.,Sr.,III etc)</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_suffix, new { @placeholder = "", @id = "personal", @class = "form-control", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Civil Status </label>
+                            <select class="form-control" id="civilstatus" name="civilstatus">
+                                <option value="0" @(Model.UserInfo.user_detail.user_civil_status == "0" || Model.UserInfo.user_detail.user_civil_status == null ? "selected" : "")>SELECT</option>
+                                <option value="Single" @(Model.UserInfo.user_detail.user_civil_status == "Single" ? "selected" : "")>Single</option>
+                                <option value="Married" @(Model.UserInfo.user_detail.user_civil_status == "Married" ? "selected" : "")>Married</option>
+                                <option value="Solo" @(Model.UserInfo.user_detail.user_civil_status == "Solo" ? "selected" : "")>Solo</option>
+                                <option value="Separated" @(Model.UserInfo.user_detail.user_civil_status == "Separated" ? "selected" : "")>Separated</option>
+                                <option value="Widower" @(Model.UserInfo.user_detail.user_civil_status == "Widower" ? "selected" : "")>Widower</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Gender </label>
+                            <select class="form-control" id="gender" name="gender">
+                                <option value="0" @(Model.UserInfo.user_detail.user_gender == "0" ? "selected" : "")>SELECT</option>
+                                <option value="M" @(Model.UserInfo.user_detail.user_gender == "M" ? "selected" : "")>M</option>
+                                <option value="F" @(Model.UserInfo.user_detail.user_gender == "F" ? "selected" : "")>F</option>
+                                <option value="LGBT" @(Model.UserInfo.user_detail.user_gender == "LGBT" ? "selected" : "")>LGBT</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Family Member Type </label>
+                            <select class="form-control" id="memberType">
+                                <option value="0">SELECT</option>
+                                <option value="Family Head" @(Model.UserInfo.user_detail.user_member_type == "Family Head" ? "selected" : "")>Family Head</option>
+                                <option value="Spouse" @(Model.UserInfo.user_detail.user_member_type == "Spouse" ? "selected" : "")>Spouse</option>
+                                <option value="Child" @(Model.UserInfo.user_detail.user_member_type == "Child" ? "selected" : "")>Child</option>
+                                <option value="Relative" @(Model.UserInfo.user_detail.user_member_type == "Relative" ? "selected" : "")>Relative</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Cellphone</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_tel_no, new { @placeholder = "", @class = "form-control", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_has_national_id == 1 ? "checked" : "" ) name="NationalID" id="National">
+                                <label class="form-check-label" for="National">
+                                    National ID?
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_has_national_id == 1 ? "checked" : "" ) name="registervoter" id="registervoter">
+                                <label class="form-check-label" for="registervoter">
+                                    Registered Voter ?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Precinct</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_precinct, new { @placeholder = "", @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_has_sss == 1 ? "checked" : "" ) name="SSS" id="SSS">
+                                <label class="form-check-label" for="SSS">
+                                    SSS/GSIS ?
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_has_philhealth == 1 ? "checked" : "" ) name="Philhealth" id="Philhealth">
+                                <label class="form-check-label" for="Philhealth">
+                                    Philhealth ?
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_has_philhealth == 1 ? "checked" : "" ) name="DriversLicense" id="DriversLicense">
+                                <label class="form-check-label" for="DriversLicense">
+                                    DriversLicense ?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_has_sss == 1 ? "checked" : "" ) name="_4ps" id="_4ps">
+                                <label class="form-check-label" for="_4ps">
+                                    4P's ?
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_is_uct == 1 ? "checked" : "" ) name="UCT" id="UCT">
+                                <label class="form-check-label" for="UCT">
+                                    UCT ?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_email, new { @placeholder = "", @class = "form-control", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Other Income</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_other_income, new { @placeholder = "", @class = "form-control", @required = "true" })
+                        </div>
+                    </div> <!-- Row END -->
+                </div>
+            </div>
+            <!-- Upload profile -->
+            <div class="col-xxl-6 mb-5 mb-xxl-0">
+                <div class="bg-secondary-soft px-4 py-5 rounded">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <h4 class="mb-4 mt-0">Birth Information</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Age</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_age, new { @class = "form-control", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Birthdate</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_date_birth.Value, new { @type = "text", @class = "form-control", @required = "true" })
+                        </div>
+                        <div class="col-md-6" hidden>
+                            Region
+                            <select name="region" id="region" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6" hidden>
+                            <label class="form-label">Province</label>
+
+                            <select name="province" id="province" class="form-control"></select>
+                        </div>
+
+                        <div class="col-md-6" hidden>
+                            <label class="form-label">City/Municipality</label>
+                            <select name="city" id="city" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                        <h4 class="mb-4 mt-0">Health Information</h4>
+                        <div class="col-md-6">
+                            <label class="form-label">Blood</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_blood, new { @class = "form-control", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Height</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_height, new { @class = "form-control", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Weight</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_weight, new { @class = "form-control", @required = "true" })
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_is_malnourish == 1 ? "checked" : "" ) name="Malnourish" id="Malnourish">
+                                <label class="form-check-label" for="Malnourish">
+                                    Malnourish ?
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_is_PWD == 1 ? "checked" : "" ) name="PWD" id="PWD">
+                                <label class="form-check-label" for="PWD">
+                                    PWD ?
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @(Model.UserInfo.user_detail.user_is_covid_vax == 1 ? "checked" : "" ) name="VAX" id="VAX">
+                                <label class="form-check-label" for="VAX">
+                                    COVID VAX ?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Comorbidities</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_comorbidities, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Other Vax</label>
+                            @Html.TextBoxFor(m => m.UserInfo.user_detail.user_other_vax, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Row END -->
+    </div>
+</div>

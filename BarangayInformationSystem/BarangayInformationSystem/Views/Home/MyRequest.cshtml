@@ -1,0 +1,33 @@
+﻿@model BarangayInformationSystem.Models.ViewModel
+@{
+    ViewBag.Title = "My Request";
+    ViewBag.Controller = "Home";
+    Layout = "~/Views/Shared/_Inner_Layout.cshtml";
+}
+
+@if (ViewBag.success != "")
+{
+    <div class="alert alert-success">@ViewBag.success</div>
+}
+
+<table class="table table-responsive">
+    <tr>
+        <th>Seq #</th>
+        <th>Request Type</th>
+        <th>Date Requested</th>
+        <th>Status</th>
+    </tr>@{ var i = 0;}
+    @foreach (var request in Model.requests)
+    {
+        i++;
+        <tr>
+            <td>@i</td>
+            <td>@request.requestType</td>
+            <td>@request.requestDate</td>
+            <td>
+                @request.requestStatus
+            </td>
+        </tr>
+    }
+
+</table>

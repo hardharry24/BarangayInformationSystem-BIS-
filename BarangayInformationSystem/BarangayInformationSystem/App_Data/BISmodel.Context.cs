@@ -28,6 +28,7 @@ namespace BarangayInformationSystem.App_Data
         public DbSet<civil_status> civil_status { get; set; }
         public DbSet<gender> gender { get; set; }
         public DbSet<purok> purok { get; set; }
+        public DbSet<Request> Request { get; set; }
         public DbSet<sitio> sitio { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<user> user { get; set; }

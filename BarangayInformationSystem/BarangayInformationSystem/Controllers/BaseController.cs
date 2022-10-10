@@ -235,16 +235,16 @@ namespace BarangayInformationSystem.Controllers
                 return Json(response, JsonRequestBehavior.AllowGet);
             }
 
-            isExist = db.user_detail.Where(m => m.user_email == model.email).FirstOrDefault();
-            if (isExist == null)
-                response.code = ERROR_CODE.SUCCESS;
-            else
-            {
-                response.code = ERROR_CODE.ERROR;
-                response.message = "Email Already Exist!";
+            //isExist = db.user_detail.Where(m => m.user_email == model.email).FirstOrDefault();
+            //if (isExist == null)
+            //    response.code = ERROR_CODE.SUCCESS;
+            //else
+            //{
+            //    response.code = ERROR_CODE.ERROR;
+            //    response.message = "Email Already Exist!";
 
-                return Json(response, JsonRequestBehavior.AllowGet);
-            }
+            //    return Json(response, JsonRequestBehavior.AllowGet);
+            //}
 
             isExist = db.user_detail.Where(m => m.user_username == model.username).FirstOrDefault();
             if (isExist == null)
@@ -278,6 +278,15 @@ namespace BarangayInformationSystem.Controllers
                 id = x.sitio_id,
                 sitio_name = x.sitio_name
             }).ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        public String GetRequestType(REQUEST_TYPE type)
+        {
+            if (type == REQUEST_TYPE.BRGYCERTIFICATE)
+                return REQUEST_TYPE_DETAIL.BRGYCERTIFICATE;
+            else if (type == REQUEST_TYPE.CERTIFICATION)
+                return REQUEST_TYPE_DETAIL.CERTIFICATION;
+            return String.Empty;
         }
     }
 

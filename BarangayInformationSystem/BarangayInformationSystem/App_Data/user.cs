@@ -23,5 +23,6 @@ namespace BarangayInformationSystem.App_Data
         public string user_access_code { get; set; }
         public Nullable<int> user_is_verified { get; set; }
         public Nullable<int> user_status { get; set; }
+        public Nullable<int> user_type { get; set; }
     }
 }

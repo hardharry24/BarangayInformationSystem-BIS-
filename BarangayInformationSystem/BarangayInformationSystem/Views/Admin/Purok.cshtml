@@ -1,0 +1,182 @@
+﻿@model BarangayInformationSystem.Models.ViewModel
+@{
+    ViewBag.Title = "Purok";
+    ViewBag.Title1 = "Purok";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<div class="col-sm-12">
+    <h2>List of Purok</h2><br />
+    <a href="#" class="btn btn-primary" onclick="create()">NEW</a>
+    <div>
+        <table class="table table-responsive-sm table-striped" style="width: 100%;">
+            <tr style="background-color: deepskyblue; color:white;">
+                <th>Seq #</th>
+                <th>Purok #</th>
+                <th>Purok Name</th>
+                <th>Purok Leader</th>
+                <th>Action</th>
+            </tr>@{ var i = 0;}
+            @foreach (var purok in Model.puroks)
+            {
+                i++;
+                <tr>
+                    <td>@i</td>
+                    <td>@purok.purok_no</td>
+                    <td>@purok.purok_name</td>
+                    <td>@purok.purok_leader</td>
+                    <td>
+                        @*<a href="#" class="btn btn-success" onclick="userInfo(@user_detail.user.user_auto_id)"><i class="fa fa-eye"></i></a>*@
+                        <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                        <a href="#" class="btn btn-danger" onclick="onDelete(@purok.purok_id)"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCreate">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Purok Details</h2>
+                <a href="#" class="close" data-dismiss="modal">&times;</a>
+
+            </div>
+            <div class="modal-body" id="modalInfoMainDiv">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Purok # </label>
+                        <input type="number" name="name" value="" class="form-control" id="purokno" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Purok Name </label>
+                        <input type="text" name="name" value="" class="form-control" id="purokname"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Purok Leader </label>
+                        <input type="text" name="name" value="" class="form-control" id="purokleader"/>
+                    </div>
+                    <div class="col-md-12">
+                        <br/>
+                        <button class="btn btn-primary" onclick="savePurok()">Submit</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+@*<div class="row g-3">
+    <div class="col-s-12">
+        <h4 class="mb-4 mt-0">Personal Information</h4><br />
+    </div>
+    <div class="col-s-6">
+        <label class="form-label">First Name </label>
+        
+    </div>
+    <div class="col-s-6">
+        <label class="form-label">Last Name </label>
+        @Html.TextBoxFor(m => m.UserInfo.user_detail.user_lname, new { @placeholder = "", @id = "personal", @class = "form-control personal", @required = "true" })
+    </div>
+    <div class="col-s-6">
+        <label class="form-label">Middle Name</label>
+        @Html.TextBoxFor(m => m.UserInfo.user_detail.user_mname, new { @placeholder = "", @id = "personal", @class = "form-control", @required = "true" })
+    </div>
+    <div class="col-s-6">
+        <label class="form-label">Suffix (Ex. Jr.,Sr.,III etc)</label>
+        @Html.TextBoxFor(m => m.UserInfo.user_detail.user_suffix, new { @placeholder = "", @id = "personal", @class = "form-control", @required = "true" })
+    </div>
+</div>*@
+
+<script type="text/javascript">
+    function create()
+    {
+        //alert("Hello");
+        //$("#modalCreate").show();
+        $("#modalCreate").modal("show");
+    }
+    function savePurok()
+    {
+        var purokno = $("#purokno").val();
+        var purokname = $("#purokname").val();
+        var purokleader = $("#purokleader").val();
+
+        //var purok = new FormData();
+        //purok.append("purok_no", purokno);
+        //purok.append("purok_name", purokname);
+        //purok.append("purok_leader", purokleader);
+        var purok = {};
+        purok.purok_no = purokno;
+        purok.purok_name = purokname;
+        purok.purok_leader = purokleader;
+
+        if (validateTxt(purokno) && validateTxt(purokname) && validateTxt(purokleader)) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/AddPurok",
+                data: JSON.stringify(purok),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (r) {
+                    var resp = JSON.parse(JSON.stringify(r));
+                    if (resp.code) {
+                        swal({
+                            title: "Message",
+                            text: resp.message,
+                            icon: "success",
+                            buttons: true,
+                        })
+                       .then((willDelete) => {
+                           if (willDelete) {
+                               window.location = "/Admin/Purok";
+                           }
+                       });
+                    }
+                    else {
+                        swal({
+                            title: "Message",
+                            text: resp.message,
+                            icon: "error",
+                            buttons: true,
+                        })
+                    }
+                }
+            });
+        }
+        
+    }
+    function validateTxt(str) {
+        if (str == "" || str == null)
+        {
+            swal({
+                title: "Message",
+                text: "Empty Field!",
+                icon: "error",
+                buttons: true,
+            });
+            return false;
+        }
+        return true;
+    }
+
+    function onDelete(id)
+    {
+        swal({
+            title: "Message",
+            text: "Confirm Delete?",
+            icon: "info",
+            buttons: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/Admin/RemovePurok/"+id;
+            }
+        });
+    }
+
+</script>
